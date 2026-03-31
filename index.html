@@ -5,88 +5,109 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LUXE PARFUMS</title>
 
+<!-- خطوط فخمة -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #000000, #1a1a1a);
+    font-family: 'Cairo', sans-serif;
+    background: radial-gradient(circle at center, #0c0c0c, #000);
     color: white;
     text-align: center;
 }
 
-/* ------- HEADER ------- */
+/* --- TITLE --- */
 h1 {
     margin-top: 40px;
-    font-size: 32px;
+    font-size: 36px;
     letter-spacing: 2px;
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(255,255,255,0.15);
 }
 
 .sub {
     opacity: 0.8;
     margin-bottom: 40px;
+    font-size: 15px;
 }
 
-/* ------- GLASS CARD ------- */
+/* --- PRODUCT CARDS --- */
 .product-card {
     width: 85%;
-    max-width: 350px;
+    max-width: 360px;
     margin: 20px auto;
     padding: 20px;
     border-radius: 18px;
 
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.08);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
     transition: 0.3s;
 }
 
-.product-card:active {
-    transform: scale(0.97);
-    background: rgba(255,255,255,0.17);
+.product-card:hover {
+    box-shadow: 0 0 35px rgba(255,255,255,0.15);
 }
 
 .product-card img {
     width: 100%;
     border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
-/* ------- FORM ------- */
+/* --- FORM --- */
 form {
     width: 85%;
-    max-width: 400px;
-    margin: 40px auto;
-    background: rgba(255,255,255,0.1);
+    max-width: 420px;
+    margin: 45px auto;
+    background: rgba(255,255,255,0.10);
     padding: 20px;
     border-radius: 18px;
     backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(255,255,255,0.07);
 }
 
 input, select {
     width: 95%;
-    padding: 12px;
+    padding: 14px;
     margin: 10px 0;
     border: none;
     border-radius: 10px;
     background: rgba(255,255,255,0.15);
     color: white;
+    font-size: 15px;
 }
 
 input::placeholder {
     color: #eee;
 }
 
-/* ------- BUTTON ------- */
+/* --- BUTTON WITH ICON --- */
 button {
     width: 100%;
     padding: 14px;
-    background: #25d366;
+
+    background: #25d366; /* WhatsApp green */
     border: none;
     border-radius: 12px;
+
     font-size: 18px;
+    color: white;
+    font-weight: bold;
+
     margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
     transition: 0.2s;
+}
+
+button img {
+    width: 24px;
 }
 
 button:active {
@@ -94,21 +115,18 @@ button:active {
     transform: scale(0.97);
 }
 
-/* ------- INSTAGRAM ICON ------- */
-.instagram {
-    margin-top: 30px;
-}
-
+/* --- INSTAGRAM ICON --- */
 .instagram img {
-    width: 50px;
+    width: 55px;
+    margin-top: 45px;
     transition: 0.2s;
 }
 
-.instagram img:active {
-    transform: scale(0.85);
+.instagram img:hover {
+    transform: scale(1.1);
 }
 
-/* ------- FOOTER ------- */
+/* --- FOOTER --- */
 footer {
     margin-top: 40px;
     opacity: 0.6;
@@ -120,11 +138,9 @@ footer {
 <body>
 
 <h1>LUXE PARFUMS ✨</h1>
-<p class="sub">عطور فاخرة – جودة عالية – توصيل لجميع المدن المغربية 🇲🇦</p>
-
+<p class="sub">عطور فاخرة – جودة عالية – توصيل سريع لجميع المدن المغربية 🇲🇦</p>
 
 <!-- ------- PRODUCTS ------- -->
-
 <div class="product-card">
     <img src="https://via.placeholder.com/350x450" alt="product1">
     <h3>Product 1</h3>
@@ -142,11 +158,11 @@ footer {
 
 
 <!-- ------- ORDER FORM ------- -->
-
 <form id="orderForm">
+
     <input type="text" id="name" placeholder="الاسم الكامل" required>
     <input type="text" id="phone" placeholder="رقم الهاتف" required>
-    <input type="text" id="address" placeholder="العنوان" required>
+    <input type="text" id="address" placeholder="العنوان الكامل" required>
 
     <select id="product">
         <option value="Product 1">Product 1</option>
@@ -154,13 +170,16 @@ footer {
         <option value="Product 3">Product 3</option>
     </select>
 
-    <button type="button" onclick="sendToWhatsApp()">أطلب الآن عبر واتساب</button>
+    <button type="button" onclick="sendToWhatsApp()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+        أطلب الآن
+    </button>
 </form>
 
 
 <!-- ------- INSTAGRAM ------- -->
 <div class="instagram">
-    <a href="https://www.instagram.com/luxe__parfumss?igsh=MWh3Y2Y3dngydDlydw%3D%3D&utm_source=qr" target="_blank">
+    <a href="https://www.instagram.com/luxe__parfumss" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
     </a>
 </div>
