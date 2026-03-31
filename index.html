@@ -61,10 +61,8 @@ h1 {
     padding: 22px;
     border-radius: 20px;
     text-align: center;
-
     backdrop-filter: blur(12px);
     box-shadow: 0 0 35px rgba(255,255,255,0.12);
-
     transition: 0.3s ease;
 }
 
@@ -90,12 +88,10 @@ form {
     margin: 55px auto;
     width: 90%;
     max-width: 450px;
-
     background: rgba(255,255,255,0.10);
     padding: 25px;
     border-radius: 22px;
     text-align: center;
-
     backdrop-filter: blur(12px);
     box-shadow: 0 0 40px rgba(255,255,255,0.15);
 }
@@ -116,7 +112,6 @@ input, select {
     color: white;
     font-size: 16px;
     box-shadow: 0 0 15px rgba(255,255,255,0.15);
-    backdrop-filter: blur(6px);
 }
 
 input::placeholder {
@@ -133,14 +128,11 @@ button {
     font-size: 19px;
     font-weight: 700;
     color: white;
-
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
-
     margin-top: 12px;
-
     box-shadow: 0 0 25px rgba(37,211,102,0.5);
     transition: 0.2s ease;
 }
@@ -158,22 +150,37 @@ button:active {
     transform: scale(0.97);
 }
 
-/* ===== INSTAGRAM ===== */
-<div class="instagram">
-    <a href="https://www.instagram.com/luxe__parfumss" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png">
-    </a>
-</div>
-    /* ===== FOOTER ===== */
+/* ===== INSTAGRAM (معدّلة كما طلبت) ===== */
+.instagram {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.instagram img {
+    width: 38px;
+    height: 38px;
+    opacity: 0.95;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
+    transition: 0.25s;
+}
+
+.instagram img:hover {
+    transform: scale(1.10);
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.45));
+}
+
+/* ===== FOOTER ===== */
 footer {
     text-align: center;
     opacity: 0.5;
     font-size: 13px;
     margin: 45px 0 25px;
 }
-</style>
 
+</style>
 </head>
+
 <body>
 
 <header>
@@ -181,32 +188,25 @@ footer {
     <p class="sub">عطور فاخرة – جودة أعلى – لمسة ملكية في كل قارورة</p>
 </header>
 
-
-<!-- ===== PRODUCTS ===== -->
 <div class="products">
-
     <div class="product-card glow">
-        <img src="https://via.placeholder.com/350x450" alt="product1">
+        <img src="https://via.placeholder.com/350x450">
         <h3>Product 1</h3>
     </div>
 
     <div class="product-card glow">
-        <img src="https://via.placeholder.com/350x450" alt="product2">
+        <img src="https://via.placeholder.com/350x450">
         <h3>Product 2</h3>
     </div>
 
     <div class="product-card glow">
-        <img src="https://via.placeholder.com/350x450" alt="product3">
+        <img src="https://via.placeholder.com/350x450">
         <h3>Product 3</h3>
     </div>
-
 </div>
 
-
-<!-- ===== ORDER FORM ===== -->
 <form id="orderForm">
     <h2 class="glow">طلبك جاهز 🤍</h2>
-
     <input type="text" id="name" placeholder="الاسم الكامل" required>
     <input type="text" id="phone" placeholder="رقم الهاتف" required>
     <input type="text" id="address" placeholder="العنوان الكامل" required>
@@ -223,11 +223,10 @@ footer {
     </button>
 </form>
 
-
 <!-- ===== INSTAGRAM ===== -->
 <div class="instagram">
     <a href="https://www.instagram.com/luxe__parfumss" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png">
     </a>
 </div>
 
@@ -235,21 +234,14 @@ footer {
     LUXE PARFUMS © 2024 – All Rights Reserved
 </footer>
 
-
-<!-- ===== WHATSAPP SCRIPT ===== -->
 <script>
 function sendToWhatsApp() {
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let address = document.getElementById("address").value;
-    let product = document.getElementById("product").value;
-
     let msg =
         "طلب جديد:%0A" +
-        "الاسم: " + name + "%0A" +
-        "رقم الهاتف: " + phone + "%0A" +
-        "العنوان: " + address + "%0A" +
-        "المنتج: " + product;
+        "الاسم: " + document.getElementById("name").value + "%0A" +
+        "رقم الهاتف: " + document.getElementById("phone").value + "%0A" +
+        "العنوان: " + document.getElementById("address").value + "%0A" +
+        "المنتج: " + document.getElementById("product").value;
 
     window.open("https://wa.me/212725607282?text=" + msg, "_blank");
 }
