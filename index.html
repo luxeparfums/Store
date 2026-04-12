@@ -7,134 +7,136 @@
 
 <style>
 
-/* ===== GENERAL ===== */
+/* ===== FONT & BASE ===== */
 body {
-  margin: 0;
+  margin:0;
   font-family: -apple-system, BlinkMacSystemFont;
-  background: #ffffff;
-  color: #111;
-  scroll-behavior: smooth;
+  background: white;
+  overflow-x:hidden;
+}
+
+/* ===== BACKGROUND ANIMATION ===== */
+.bg {
+  position: fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+.blob {
+  position:absolute;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter: blur(120px);
+  opacity:0.6;
+  animation: float 10s infinite alternate;
+}
+
+.red { background:red; top:20%; left:10%; }
+.blue { background:blue; top:50%; left:60%; }
+.yellow { background:yellow; top:70%; left:20%; }
+
+@keyframes float {
+  from { transform:translate(0,0); }
+  to { transform:translate(100px,-100px); }
 }
 
 /* ===== TOP BAR ===== */
-.top-bar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: red;
-  color: white;
-  text-align: center;
-  padding: 8px;
-  z-index: 999;
+.top {
+  background:red;
+  color:white;
+  text-align:center;
+  padding:10px;
+  font-size:18px;
 }
 
 /* ===== HERO ===== */
 .hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  padding-top: 40px;
+  text-align:center;
+  padding:80px 20px;
 }
-
 .hero h1 {
-  font-size: 40px;
-  letter-spacing: 2px;
+  font-size:40px;
 }
-
 .hero p {
-  opacity: 0.6;
+  font-size:18px;
 }
 
-/* ===== GLASS EFFECT ===== */
+/* ===== GLASS ===== */
 .glass {
   backdrop-filter: blur(20px);
-  background: rgba(255,255,255,0.4);
-  border-radius: 20px;
-  padding: 20px;
-  margin: 20px;
-  transition: 0.4s;
-}
-
-/* ===== GLOW HOVER ===== */
-.glass:hover {
-  box-shadow: 0 0 30px rgba(0,0,0,0.1);
-  transform: translateY(-5px);
+  background: rgba(255,255,255,0.5);
+  margin:20px;
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 0 20px rgba(0,0,0,0.1);
 }
 
 /* ===== PACKS ===== */
-.packs {
-  text-align: center;
-}
-
 .pack {
-  display: inline-block;
-  margin: 10px;
-  cursor: pointer;
+  margin:15px;
+  padding:20px;
+  cursor:pointer;
+  font-size:18px;
+  border-radius:15px;
+  transition:0.3s;
 }
 
-/* ===== COLORS ===== */
-.men { background: #eaf2ff; }
-.women { background: #ffeaf2; }
-
-/* ===== CHECKBOX STYLE ===== */
-label {
-  display: block;
-  margin: 10px;
-  cursor: pointer;
-}
-
-/* ===== ORDER ===== */
-.order input, select {
-  width: 80%;
-  padding: 12px;
-  margin: 10px;
-  border-radius: 10px;
-  border: none;
-  background: rgba(255,255,255,0.7);
+.pack:hover {
+  transform:scale(1.05);
+  box-shadow:0 0 20px rgba(0,0,0,0.2);
 }
 
 /* ===== BUTTON ===== */
 .btn {
-  background: #007aff;
-  color: white;
-  padding: 15px;
-  border-radius: 12px;
-  border: none;
-  font-size: 16px;
+  background:#007aff;
+  color:white;
+  padding:15px;
+  border:none;
+  border-radius:15px;
+  font-size:18px;
+  margin-top:10px;
+}
+
+/* ===== PERFUME LIST ===== */
+.item {
+  display:flex;
+  justify-content:space-between;
+  padding:10px;
+  border-bottom:1px solid #ddd;
+}
+
+.plus {
+  background:green;
+  color:white;
+  border:none;
+  border-radius:50%;
+  width:35px;
+  height:35px;
+  font-size:20px;
+}
+
+/* ===== ORDER ===== */
+input {
+  width:90%;
+  padding:15px;
+  margin:10px;
+  border-radius:10px;
+  border:none;
+  background:#f5f5f5;
 }
 
 /* ===== FIXED BUTTON ===== */
-.fixed-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(0,255,100,0.3);
-  backdrop-filter: blur(10px);
-  color: black;
-  padding: 15px 20px;
-  border-radius: 50px;
-  box-shadow: 0 0 20px rgba(0,255,100,0.5);
-  text-decoration: none;
-}
-
-/* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  padding: 30px;
-}
-
-/* ===== ANIMATION ===== */
-.fade {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1s;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
+.fixed {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:rgba(0,255,100,0.3);
+  padding:15px;
+  border-radius:50px;
+  box-shadow:0 0 20px green;
+  text-decoration:none;
 }
 
 </style>
@@ -142,111 +144,122 @@ footer {
 
 <body>
 
-<div class="top-bar">🚚 التوصيل متوفر في جميع أنحاء المغرب</div>
+<div class="bg">
+  <div class="blob red"></div>
+  <div class="blob blue"></div>
+  <div class="blob yellow"></div>
+</div>
 
-<!-- HERO -->
-<section class="hero fade">
-  <h1>LUXE PARFUMS</h1>
-  <p>الفخامة تبدأ من عطرك ✨</p>
-</section>
+<div class="top">🚚 التوصيل متوفر في جميع أنحاء المغرب</div>
+
+<div class="hero">
+<h1>💎 LUXE PARFUMS</h1>
+<p>الفخامة تبدأ من عطرك ✨</p>
+</div>
 
 <!-- PACKS -->
-<section class="packs fade">
-  <div class="glass pack" onclick="selectPack('3h')">Pack 3 Homme</div>
-  <div class="glass pack" onclick="selectPack('3f')">Pack 3 Femme</div>
-  <div class="glass pack" onclick="selectPack('6')">Pack 6</div>
-</section>
+<div class="glass">
+<h2>🔥 Packs</h2>
 
-<!-- MEN -->
-<section class="glass men fade" id="men">
-<h2>عطور رجالية</h2>
-<label><input type="checkbox" value="Sauvage"> Sauvage</label>
-<label><input type="checkbox" value="Bleu de Chanel"> Bleu de Chanel</label>
-<label><input type="checkbox" value="Stronger With You Intensely"> Stronger With You Intensely</label>
-</section>
+<div class="pack" onclick="choosePack('3h',3)">
+💼 Pack Homme 3 = 99DH
+</div>
 
-<!-- WOMEN -->
-<section class="glass women fade" id="women">
-<h2>عطور نسائية</h2>
-<label><input type="checkbox" value="Candy Love"> Candy Love</label>
-<label><input type="checkbox" value="L'interdit"> L'interdit</label>
-<label><input type="checkbox" value="Kayali"> Kayali</label>
-</section>
+<div class="pack" onclick="choosePack('3f',3)">
+💖 Pack Femme 3 = 99DH
+</div>
+
+<div class="pack" onclick="choosePack('6',6)">
+👑 Pack Complet 6 = 149DH
+</div>
+
+<button class="btn" onclick="showPerfumes()">✨ اختار عطرك</button>
+</div>
+
+<!-- PERFUMES -->
+<div class="glass" id="perfumes" style="display:none;">
+<h2>🌸 اختار العطور</h2>
+
+<div id="list"></div>
+
+<p>عدد المختار: <span id="count">0</span></p>
+</div>
 
 <!-- ORDER -->
-<section class="glass order fade" id="order">
-<h2>اطلب الآن</h2>
+<div class="glass">
+<h2>📦 الطلب</h2>
 
-<input type="text" id="name" placeholder="الاسم">
-<input type="text" id="address" placeholder="العنوان">
-<input type="text" id="phone" placeholder="الهاتف">
+<input id="name" placeholder="الاسم">
+<input id="address" placeholder="العنوان">
+<input id="phone" placeholder="الهاتف">
 
-<button class="btn" onclick="sendOrder()">اطلب الآن</button>
-</section>
+<button class="btn" onclick="send()">📲 اطلب الآن</button>
+</div>
 
-<a class="fixed-btn" href="#order">اطلب</a>
-
-<footer>
-<p>© LUXE PARFUMS</p>
-<a href="https://www.instagram.com/luxe__parfumss?igsh=MWh3Y2Y3dngydDlydw%3D%3D&utm_source=qr">
-Instagram
-</a>
-</footer>
+<a href="#top" class="fixed">🛒 طلب</a>
 
 <script>
 
-/* ===== ANIMATION SCROLL ===== */
-const faders = document.querySelectorAll('.fade');
-window.addEventListener('scroll', () => {
-  faders.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      el.classList.add('show');
-    }
-  });
-});
-
-/* ===== PACK ===== */
-let selectedPack = "";
-
-function selectPack(p){
-  selectedPack = p;
-  document.getElementById("order").scrollIntoView({behavior:"smooth"});
-}
-
-/* ===== ORDER ===== */
-function sendOrder(){
-
-let name = document.getElementById("name").value;
-let address = document.getElementById("address").value;
-let phone = document.getElementById("phone").value;
-
+let packType = "";
+let max = 0;
 let selected = [];
-document.querySelectorAll("input:checked").forEach(el => {
-  selected.push(el.value);
-});
 
-if(selectedPack == "3h" && selected.length != 3){
-  alert("اختر 3 عطور رجالية");
-  return;
+const data = {
+  hommes: ["Sauvage","Bleu de Chanel","Stronger With You"],
+  femmes: ["Candy Love","L'interdit","Kayali"]
+};
+
+function choosePack(type, m){
+  packType = type;
+  max = m;
+  selected = [];
+  alert("تم اختيار الباك ✅");
 }
 
-if(selectedPack == "3f" && selected.length != 3){
-  alert("اختر 3 عطور نسائية");
-  return;
+function showPerfumes(){
+  let list = document.getElementById("list");
+  list.innerHTML = "";
+
+  let perfumes = [];
+
+  if(packType == "3h") perfumes = data.hommes;
+  if(packType == "3f") perfumes = data.femmes;
+  if(packType == "6") perfumes = data.hommes.concat(data.femmes);
+
+  perfumes.forEach(p => {
+    list.innerHTML += `
+      <div class="item">
+        ${p}
+        <button class="plus" onclick="add('${p}')">+</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("perfumes").style.display = "block";
 }
 
-if(selectedPack == "6" && selected.length != 6){
-  alert("اختر 6 عطور");
+function add(p){
+  if(selected.length >= max){
+    alert("🚫 وصلت للحد الأقصى");
+    return;
+  }
+  selected.push(p);
+  document.getElementById("count").innerText = selected.length;
+}
+
+function send(){
+
+if(selected.length != max){
+  alert("⚠️ خاصك تكمل الاختيار");
   return;
 }
 
 let msg =
-"طلب جديد:\n" +
-"الاسم: " + name + "\n" +
-"العنوان: " + address + "\n" +
-"الهاتف: " + phone + "\n" +
-"الباك: " + selectedPack + "\n" +
+"طلب جديد 💎\n" +
+"الاسم: " + name.value + "\n" +
+"العنوان: " + address.value + "\n" +
+"الهاتف: " + phone.value + "\n" +
+"الباك: " + packType + "\n" +
 "العطور: " + selected.join(", ");
 
 window.open("https://wa.me/212725607282?text=" + encodeURIComponent(msg));
