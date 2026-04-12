@@ -57,7 +57,6 @@ text-align:center;
 padding:70px 20px;
 }
 
-/* 🔥 MODIFIED TITLE */
 .hero h1{
 font-size:40px;
 display:inline-block;
@@ -102,6 +101,16 @@ align-items:center;
 justify-content:space-between;
 padding:10px;
 border-bottom:1px solid #eee;
+}
+
+/* ===== MEN BLUE TABLE ===== */
+.glass:nth-of-type(4){
+background:rgba(0,122,255,0.08);
+}
+
+/* ===== WOMEN PINK TABLE ===== */
+.glass:nth-of-type(5){
+background:rgba(255,45,149,0.08);
 }
 
 /* ===== PLUS ===== */
@@ -152,17 +161,21 @@ border:none;
 background:#f5f5f5;
 }
 
-/* ===== BUTTON ===== */
+/* ===== BUTTON (UPDATED) ===== */
 .btn{
-background:black;
-color:gold;
-padding:15px;
-border-radius:15px;
+background:#25D366;
+color:white;
+padding:18px;
+border-radius:20px;
 border:none;
-font-size:18px;
+font-size:20px;
 cursor:pointer;
-position:relative;
-overflow:hidden;
+display:block;
+margin:20px auto;
+width:80%;
+text-align:center;
+font-weight:bold;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
 transition:0.2s;
 }
 
@@ -221,7 +234,7 @@ text-shadow:0 0 10px gold;
 
 </div>
 
-<!-- MEN -->
+<!-- MEN (BLUE) -->
 <div class="glass">
 <h2>👨 عطور رجالية</h2>
 
@@ -231,7 +244,7 @@ text-shadow:0 0 10px gold;
 
 </div>
 
-<!-- WOMEN -->
+<!-- WOMEN (PINK) -->
 <div class="glass">
 <h2>👩 عطور نسائية</h2>
 
@@ -260,7 +273,7 @@ text-shadow:0 0 10px gold;
 
 <p>عدد المختار: <span id="count">0</span></p>
 
-<button class="btn" onclick="send()">📲 اطلب الآن</button>
+<button class="btn" onclick="send()">📲 اطلب عبر واتساب</button>
 </div>
 
 <footer>
