@@ -115,10 +115,39 @@ margin-right:10px;
 .plus{
 background:linear-gradient(45deg,gold,white);
 border:none;
-width:35px;
-height:35px;
+width:40px;
+height:40px;
 border-radius:50%;
 font-size:18px;
+cursor:pointer;
+position:relative;
+overflow:hidden;
+transition:0.2s;
+}
+
+/* 💧 Ripple effect */
+.plus::after{
+content:"";
+position:absolute;
+width:100px;
+height:100px;
+background:rgba(255,255,255,0.6);
+border-radius:50%;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+opacity:0;
+transition:0.4s;
+}
+
+.plus:active::after{
+transform:translate(-50%,-50%) scale(2);
+opacity:0;
+}
+
+/* press feel */
+.plus:active{
+transform:scale(0.85);
 }
 
 /* ===== INPUT ===== */
@@ -139,6 +168,34 @@ padding:15px;
 border-radius:15px;
 border:none;
 font-size:18px;
+cursor:pointer;
+position:relative;
+overflow:hidden;
+transition:0.2s;
+}
+
+/* ripple for main button */
+.btn::after{
+content:"";
+position:absolute;
+width:120px;
+height:120px;
+background:rgba(255,255,255,0.4);
+border-radius:50%;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+opacity:0;
+transition:0.4s;
+}
+
+.btn:active::after{
+transform:translate(-50%,-50%) scale(2);
+opacity:0;
+}
+
+.btn:active{
+transform:scale(0.9);
 }
 
 /* ===== FOOTER ===== */
@@ -289,7 +346,7 @@ perfumes.forEach(p=>{
 list.innerHTML+=`
 <div class="item">
 ${p}
-<button class="plus" onclick="add('${p}')">+</button>
+<button class="plus" onclick="haptic(); add('${p}')">+</button>
 </div>`;
 });
 
@@ -322,6 +379,8 @@ alert("⚠️ اختر العدد الصحيح");
 return;
 }
 
+haptic();
+
 let msg=
 "طلب جديد 💎\n"+
 "الاسم: "+name.value+"\n"+
@@ -332,6 +391,13 @@ let msg=
 
 window.open("https://wa.me/212725607282?text="+encodeURIComponent(msg));
 
+}
+
+/* 📳 iPhone vibration */
+function haptic(){
+if(navigator.vibrate){
+navigator.vibrate(25);
+}
 }
 
 </script>
