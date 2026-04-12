@@ -7,136 +7,141 @@
 
 <style>
 
-/* ===== FONT & BASE ===== */
-body {
-  margin:0;
-  font-family: -apple-system, BlinkMacSystemFont;
-  background: white;
-  overflow-x:hidden;
+/* ===== BASE ===== */
+body{
+margin:0;
+font-family:-apple-system, BlinkMacSystemFont;
+background:#fff;
+color:#111;
+overflow-x:hidden;
 }
 
-/* ===== BACKGROUND ANIMATION ===== */
-.bg {
-  position: fixed;
-  width:100%;
-  height:100%;
-  z-index:-1;
+/* ===== BACKGROUND ===== */
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
 }
 
-.blob {
-  position:absolute;
-  width:300px;
-  height:300px;
-  border-radius:50%;
-  filter: blur(120px);
-  opacity:0.6;
-  animation: float 10s infinite alternate;
+.blob{
+position:absolute;
+width:350px;
+height:350px;
+border-radius:50%;
+filter:blur(120px);
+opacity:0.5;
+animation:move 10s infinite alternate;
 }
 
-.red { background:red; top:20%; left:10%; }
-.blue { background:blue; top:50%; left:60%; }
-.yellow { background:yellow; top:70%; left:20%; }
+.red{background:#ff3b30; top:10%; left:5%;}
+.blue{background:#007aff; top:60%; left:60%;}
+.gold{background:#ffd700; top:70%; left:20%;}
 
-@keyframes float {
-  from { transform:translate(0,0); }
-  to { transform:translate(100px,-100px); }
+@keyframes move{
+from{transform:translate(0,0);}
+to{transform:translate(120px,-120px);}
 }
 
-/* ===== TOP BAR ===== */
-.top {
-  background:red;
-  color:white;
-  text-align:center;
-  padding:10px;
-  font-size:18px;
+/* ===== TOP ===== */
+.top{
+background:#ff3b30;
+color:white;
+text-align:center;
+padding:10px;
 }
 
 /* ===== HERO ===== */
-.hero {
-  text-align:center;
-  padding:80px 20px;
+.hero{
+text-align:center;
+padding:70px 20px;
 }
-.hero h1 {
-  font-size:40px;
-}
-.hero p {
-  font-size:18px;
+
+.hero h1{
+font-size:40px;
+background:linear-gradient(90deg,gold,white,gold);
+-webkit-background-clip:text;
+color:transparent;
 }
 
 /* ===== GLASS ===== */
-.glass {
-  backdrop-filter: blur(20px);
-  background: rgba(255,255,255,0.5);
-  margin:20px;
-  padding:20px;
-  border-radius:20px;
-  box-shadow:0 0 20px rgba(0,0,0,0.1);
+.glass{
+backdrop-filter:blur(25px);
+background:rgba(255,255,255,0.5);
+margin:20px;
+padding:25px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* ===== PACKS ===== */
-.pack {
-  margin:15px;
-  padding:20px;
-  cursor:pointer;
-  font-size:18px;
-  border-radius:15px;
-  transition:0.3s;
+/* ===== PACK ===== */
+.pack{
+text-align:center;
+margin:15px 0;
 }
 
-.pack:hover {
-  transform:scale(1.05);
-  box-shadow:0 0 20px rgba(0,0,0,0.2);
+.pack img{
+width:100%;
+border-radius:20px;
+margin-bottom:10px;
+}
+
+/* ===== PERFUME ITEM ===== */
+.item{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:10px;
+border-bottom:1px solid #eee;
+}
+
+.item img{
+width:50px;
+height:50px;
+border-radius:10px;
+margin-right:10px;
+}
+
+/* ===== PLUS ===== */
+.plus{
+background:linear-gradient(45deg,gold,white);
+border:none;
+width:35px;
+height:35px;
+border-radius:50%;
+font-size:18px;
+}
+
+/* ===== INPUT ===== */
+input,select{
+width:90%;
+padding:12px;
+margin:10px;
+border-radius:10px;
+border:none;
+background:#f5f5f5;
 }
 
 /* ===== BUTTON ===== */
-.btn {
-  background:#007aff;
-  color:white;
-  padding:15px;
-  border:none;
-  border-radius:15px;
-  font-size:18px;
-  margin-top:10px;
+.btn{
+background:black;
+color:gold;
+padding:15px;
+border-radius:15px;
+border:none;
+font-size:18px;
 }
 
-/* ===== PERFUME LIST ===== */
-.item {
-  display:flex;
-  justify-content:space-between;
-  padding:10px;
-  border-bottom:1px solid #ddd;
+/* ===== FOOTER ===== */
+footer{
+text-align:center;
+padding:30px;
+color:#777;
 }
 
-.plus {
-  background:green;
-  color:white;
-  border:none;
-  border-radius:50%;
-  width:35px;
-  height:35px;
-  font-size:20px;
-}
-
-/* ===== ORDER ===== */
-input {
-  width:90%;
-  padding:15px;
-  margin:10px;
-  border-radius:10px;
-  border:none;
-  background:#f5f5f5;
-}
-
-/* ===== FIXED BUTTON ===== */
-.fixed {
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:rgba(0,255,100,0.3);
-  padding:15px;
-  border-radius:50px;
-  box-shadow:0 0 20px green;
-  text-decoration:none;
+footer span{
+color:gold;
+text-shadow:0 0 10px gold;
 }
 
 </style>
@@ -145,44 +150,79 @@ input {
 <body>
 
 <div class="bg">
-  <div class="blob red"></div>
-  <div class="blob blue"></div>
-  <div class="blob yellow"></div>
+<div class="blob red"></div>
+<div class="blob blue"></div>
+<div class="blob gold"></div>
 </div>
 
 <div class="top">🚚 التوصيل متوفر في جميع أنحاء المغرب</div>
 
 <div class="hero">
-<h1>💎 LUXE PARFUMS</h1>
+<h1>LUXE PARFUMS</h1>
 <p>الفخامة تبدأ من عطرك ✨</p>
 </div>
 
 <!-- PACKS -->
 <div class="glass">
-<h2>🔥 Packs</h2>
+<h2>💎 Packs</h2>
 
-<div class="pack" onclick="choosePack('3h',3)">
+<div class="pack">
+<img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539">
 💼 Pack Homme 3 = 99DH
 </div>
 
-<div class="pack" onclick="choosePack('3f',3)">
+<div class="pack">
+<img src="https://images.unsplash.com/photo-1615634262417-5a3c6c4c42f6">
 💖 Pack Femme 3 = 99DH
 </div>
 
-<div class="pack" onclick="choosePack('6',6)">
+<div class="pack">
+<img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad">
 👑 Pack Complet 6 = 149DH
 </div>
 
-<button class="btn" onclick="showPerfumes()">✨ اختار عطرك</button>
 </div>
 
-<!-- PERFUMES -->
-<div class="glass" id="perfumes" style="display:none;">
-<h2>🌸 اختار العطور</h2>
+<!-- MEN -->
+<div class="glass">
+<h2>👨 عطور رجالية</h2>
 
-<div id="list"></div>
+<div class="item">
+<img src="https://images.unsplash.com/photo-1615634262417-5a3c6c4c42f6">
+Sauvage
+</div>
 
-<p>عدد المختار: <span id="count">0</span></p>
+<div class="item">
+<img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad">
+Bleu de Chanel
+</div>
+
+<div class="item">
+<img src="https://images.unsplash.com/photo-1594035910387-fea47794261f">
+Stronger With You
+</div>
+
+</div>
+
+<!-- WOMEN -->
+<div class="glass">
+<h2>👩 عطور نسائية</h2>
+
+<div class="item">
+<img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6">
+Candy Love
+</div>
+
+<div class="item">
+<img src="https://images.unsplash.com/photo-1615634262417-5a3c6c4c42f6">
+L'interdit
+</div>
+
+<div class="item">
+<img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d">
+Kayali
+</div>
+
 </div>
 
 <!-- ORDER -->
@@ -193,77 +233,78 @@ input {
 <input id="address" placeholder="العنوان">
 <input id="phone" placeholder="الهاتف">
 
+<select id="pack">
+<option value="3h">Pack 3 Homme</option>
+<option value="3f">Pack 3 Femme</option>
+<option value="6">Pack 6</option>
+</select>
+
+<h3>✨ اختر عطرك</h3>
+<div id="list"></div>
+
+<p>عدد المختار: <span id="count">0</span></p>
+
 <button class="btn" onclick="send()">📲 اطلب الآن</button>
 </div>
 
-<a href="#top" class="fixed">🛒 طلب</a>
+<footer>
+© <span>LUXE PARFUMS</span>
+</footer>
 
 <script>
 
-let packType = "";
-let max = 0;
-let selected = [];
+let selected=[];
+let max=3;
 
-const data = {
-  hommes: ["Sauvage","Bleu de Chanel","Stronger With You"],
-  femmes: ["Candy Love","L'interdit","Kayali"]
-};
+const perfumes=[
+"Sauvage","Bleu de Chanel","Stronger With You",
+"Candy Love","L'interdit","Kayali"
+];
 
-function choosePack(type, m){
-  packType = type;
-  max = m;
-  selected = [];
-  alert("تم اختيار الباك ✅");
+function render(){
+let list=document.getElementById("list");
+list.innerHTML="";
+perfumes.forEach(p=>{
+list.innerHTML+=`
+<div class="item">
+${p}
+<button class="plus" onclick="add('${p}')">+</button>
+</div>`;
+});
 }
-
-function showPerfumes(){
-  let list = document.getElementById("list");
-  list.innerHTML = "";
-
-  let perfumes = [];
-
-  if(packType == "3h") perfumes = data.hommes;
-  if(packType == "3f") perfumes = data.femmes;
-  if(packType == "6") perfumes = data.hommes.concat(data.femmes);
-
-  perfumes.forEach(p => {
-    list.innerHTML += `
-      <div class="item">
-        ${p}
-        <button class="plus" onclick="add('${p}')">+</button>
-      </div>
-    `;
-  });
-
-  document.getElementById("perfumes").style.display = "block";
-}
+render();
 
 function add(p){
-  if(selected.length >= max){
-    alert("🚫 وصلت للحد الأقصى");
-    return;
-  }
-  selected.push(p);
-  document.getElementById("count").innerText = selected.length;
+let pack=document.getElementById("pack").value;
+max=(pack=="6")?6:3;
+
+if(selected.length>=max){
+alert("🚫 الحد الأقصى");
+return;
+}
+
+selected.push(p);
+count.innerText=selected.length;
 }
 
 function send(){
+let pack=document.getElementById("pack").value;
+max=(pack=="6")?6:3;
 
-if(selected.length != max){
-  alert("⚠️ خاصك تكمل الاختيار");
-  return;
+if(selected.length!=max){
+alert("⚠️ اختر العدد الصحيح");
+return;
 }
 
-let msg =
-"طلب جديد 💎\n" +
-"الاسم: " + name.value + "\n" +
-"العنوان: " + address.value + "\n" +
-"الهاتف: " + phone.value + "\n" +
-"الباك: " + packType + "\n" +
-"العطور: " + selected.join(", ");
+let msg=
+"طلب جديد 💎\n"+
+"الاسم: "+name.value+"\n"+
+"العنوان: "+address.value+"\n"+
+"الهاتف: "+phone.value+"\n"+
+"الباك: "+pack+"\n"+
+"العطور: "+selected.join(", ");
 
-window.open("https://wa.me/212725607282?text=" + encodeURIComponent(msg));
-
+window.open("https://wa.me/212725607282?text="+encodeURIComponent(msg));
 }
 
 </script>
