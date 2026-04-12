@@ -1,190 +1,140 @@
-<body>
-
-<!-- ===== TOP LOGO ===== -->
-<div style="width:100%; text-align:center; padding:18px 0 5px;">
-    <img src="https://image2url.com/r2/default/images/1774985026686-5bb1a04e-63ca-4fa2-9c55-99b77f45b2b9.png" 
-         alt="Logo"
-         style="height:55px; object-fit:contain; filter: drop-shadow(0 0 12px rgba(255,255,255,0.25));">
-</div>
-    
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LUXE PARFUMS</title>
 
-<!-- خطوط فاخرة -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-
 <style>
 
 /* ===== GENERAL ===== */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Cairo', sans-serif;
-    background: linear-gradient(135deg, #000000, #0A0A0A, #111);
-    color: white;
-    overflow-x: hidden;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont;
+  background: #ffffff;
+  color: #111;
+  scroll-behavior: smooth;
 }
 
-/* ===== GLOBAL GLOW ===== */
-.glow {
-    text-shadow: 0 0 18px rgba(255,255,255,0.25);
+/* ===== TOP BAR ===== */
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: red;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  z-index: 999;
 }
 
-/* ===== HEADER ===== */
-header {
-    text-align: center;
-    padding: 60px 20px 30px;
+/* ===== HERO ===== */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-top: 40px;
 }
 
-h1 {
-    font-size: 42px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-    text-shadow: 0 0 35px rgba(255,255,255,0.45);
+.hero h1 {
+  font-size: 40px;
+  letter-spacing: 2px;
 }
 
-.sub {
-    opacity: 0.85;
-    font-size: 16px;
-    margin-top: 5px;
-    letter-spacing: 1px;
+.hero p {
+  opacity: 0.6;
 }
 
-/* ===== PRODUCTS GRID ===== */
-.products {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 420px;
+/* ===== GLASS EFFECT ===== */
+.glass {
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.4);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+  transition: 0.4s;
 }
 
-.product-card {
-    background: rgba(255,255,255,0.08);
-    padding: 22px;
-    border-radius: 20px;
-    text-align: center;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 0 35px rgba(255,255,255,0.12);
-    transition: 0.3s ease;
+/* ===== GLOW HOVER ===== */
+.glass:hover {
+  box-shadow: 0 0 30px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
 }
 
-.product-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 45px rgba(255,255,255,0.18);
+/* ===== PACKS ===== */
+.packs {
+  text-align: center;
 }
 
-.product-card img {
-    width: 100%;
-    border-radius: 14px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.55);
+.pack {
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
 }
 
-.product-card h3 {
-    margin-top: 15px;
-    font-size: 20px;
-    letter-spacing: 1px;
+/* ===== COLORS ===== */
+.men { background: #eaf2ff; }
+.women { background: #ffeaf2; }
+
+/* ===== CHECKBOX STYLE ===== */
+label {
+  display: block;
+  margin: 10px;
+  cursor: pointer;
 }
 
-/* ===== FORM ===== */
-form {
-    margin: 55px auto;
-    width: 90%;
-    max-width: 450px;
-    background: rgba(255,255,255,0.10);
-    padding: 25px;
-    border-radius: 22px;
-    text-align: center;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 0 40px rgba(255,255,255,0.15);
-}
-
-form h2 {
-    margin-bottom: 20px;
-    font-size: 22px;
-    font-weight: 700;
-}
-
-input, select {
-    width: 95%;
-    padding: 15px;
-    margin: 12px 0;
-    border: none;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.18);
-    color: white;
-    font-size: 16px;
-    box-shadow: 0 0 15px rgba(255,255,255,0.15);
-}
-
-input::placeholder {
-    color: #ddd;
+/* ===== ORDER ===== */
+.order input, select {
+  width: 80%;
+  padding: 12px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.7);
 }
 
 /* ===== BUTTON ===== */
-button {
-    width: 100%;
-    padding: 14px;
-    background: #25d366;
-    border: none;
-    border-radius: 14px;
-    font-size: 19px;
-    font-weight: 700;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 12px;
-    box-shadow: 0 0 25px rgba(37,211,102,0.5);
-    transition: 0.2s ease;
+.btn {
+  background: #007aff;
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
 }
 
-button img {
-    width: 26px;
-}
-
-button:hover {
-    transform: scale(1.04);
-    box-shadow: 0 0 35px rgba(37,211,102,0.7);
-}
-
-button:active {
-    transform: scale(0.97);
-}
-
-/* ===== INSTAGRAM (معدّلة كما طلبت) ===== */
-.instagram {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-}
-
-.instagram img {
-    width: 38px;
-    height: 38px;
-    opacity: 0.95;
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
-    transition: 0.25s;
-}
-
-.instagram img:hover {
-    transform: scale(1.10);
-    filter: drop-shadow(0 0 15px rgba(255,255,255,0.45));
+/* ===== FIXED BUTTON ===== */
+.fixed-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0,255,100,0.3);
+  backdrop-filter: blur(10px);
+  color: black;
+  padding: 15px 20px;
+  border-radius: 50px;
+  box-shadow: 0 0 20px rgba(0,255,100,0.5);
+  text-decoration: none;
 }
 
 /* ===== FOOTER ===== */
 footer {
-    text-align: center;
-    opacity: 0.5;
-    font-size: 13px;
-    margin: 45px 0 25px;
+  text-align: center;
+  padding: 30px;
+}
+
+/* ===== ANIMATION ===== */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 </style>
@@ -192,80 +142,117 @@ footer {
 
 <body>
 
-<header>
-    <h1 class="glow">LUXE PARFUMS ✅✨</h1>
-    <p class="sub">عطور فاخرة – جودة أعلى – لمسة ملكية في كل قارورة</p>
-</header>
+<div class="top-bar">🚚 التوصيل متوفر في جميع أنحاء المغرب</div>
 
-<div class="products">
-    <div class="product-card glow">
-        <img src="https://image2url.com/r2/default/images/1774983449073-861e192a-1429-4037-80af-30a5db21f08b.png">
-        <h3>49 درهم فقط 😍👌
+<!-- HERO -->
+<section class="hero fade">
+  <h1>LUXE PARFUMS</h1>
+  <p>الفخامة تبدأ من عطرك ✨</p>
+</section>
 
-باك 2 عطور ✨ (العطور المتوفّرة: Sauvage 🔥 – Bleu de Chanel 💎 – Candy Love 💖)
+<!-- PACKS -->
+<section class="packs fade">
+  <div class="glass pack" onclick="selectPack('3h')">Pack 3 Homme</div>
+  <div class="glass pack" onclick="selectPack('3f')">Pack 3 Femme</div>
+  <div class="glass pack" onclick="selectPack('6')">Pack 6</div>
+</section>
 
-✅توصيل مجاني🚚</h3>
-    </div>
+<!-- MEN -->
+<section class="glass men fade" id="men">
+<h2>عطور رجالية</h2>
+<label><input type="checkbox" value="Sauvage"> Sauvage</label>
+<label><input type="checkbox" value="Bleu de Chanel"> Bleu de Chanel</label>
+<label><input type="checkbox" value="Stronger With You Intensely"> Stronger With You Intensely</label>
+</section>
 
-    <div class="product-card glow">
-        <img src="https://image2url.com/r2/default/images/1774984264976-6fe704b7-365c-4697-bee2-082041eda943.png">
-        <h3>69 درهم فقط 😍👌
+<!-- WOMEN -->
+<section class="glass women fade" id="women">
+<h2>عطور نسائية</h2>
+<label><input type="checkbox" value="Candy Love"> Candy Love</label>
+<label><input type="checkbox" value="L'interdit"> L'interdit</label>
+<label><input type="checkbox" value="Kayali"> Kayali</label>
+</section>
 
-باك 3 عطور ✨ (العطور المتوفّرة: Sauvage 🔥 – Bleu de Chanel 💎 – Candy Love 💖)
+<!-- ORDER -->
+<section class="glass order fade" id="order">
+<h2>اطلب الآن</h2>
 
-✅توصيل مجاني🚚</h3>
-    </div>
+<input type="text" id="name" placeholder="الاسم">
+<input type="text" id="address" placeholder="العنوان">
+<input type="text" id="phone" placeholder="الهاتف">
 
-    <div class="product-card glow">
-        <img src="https://image2url.com/r2/default/images/1774984503399-50ea707a-d919-4bde-b14e-686df8d1241f.png">
-        <h3>139 درهم فقط 😍👌
+<button class="btn" onclick="sendOrder()">اطلب الآن</button>
+</section>
 
-باك 6 عطور ✨ (العطور المتوفّرة: Sauvage 🔥 – Bleu de Chanel 💎 – Candy Love 💖)
-
-✅توصيل مجاني🚚</h3>
-    </div>
-</div>
-
-<form id="orderForm">
-    <h2 class="glow">طلبك جاهز 🤍</h2>
-    <input type="text" id="name" placeholder="الاسم الكامل" required>
-    <input type="text" id="phone" placeholder="رقم الهاتف" required>
-    <input type="text" id="address" placeholder="العنوان الكامل" required>
-
-    <select id="product">
-        <option value="Product 1">باك 2 عطور ✅👌</option>
-        <option value="Product 2">باك 3 عطور 😳🔥</option>
-        <option value="Product 3">باك 6 عطور 💀😍</option>
-    </select>
-
-    <button type="button" onclick="sendToWhatsApp()">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-        أطلب الآن
-    </button>
-</form>
-
-<!-- ===== INSTAGRAM ===== -->
-<div class="instagram">
-    <a href="https://www.instagram.com/luxe__parfumss" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png">
-    </a>
-</div>
+<a class="fixed-btn" href="#order">اطلب</a>
 
 <footer>
-    LUXE PARFUMS © 2026 – All Rights Reserved
+<p>© LUXE PARFUMS</p>
+<a href="https://www.instagram.com/luxe__parfumss?igsh=MWh3Y2Y3dngydDlydw%3D%3D&utm_source=qr">
+Instagram
+</a>
 </footer>
 
 <script>
-function sendToWhatsApp() {
-    let msg =
-        "طلب جديد:%0A" +
-        "الاسم: " + document.getElementById("name").value + "%0A" +
-        "رقم الهاتف: " + document.getElementById("phone").value + "%0A" +
-        "العنوان: " + document.getElementById("address").value + "%0A" +
-        "المنتج: " + document.getElementById("product").value;
 
-    window.open("https://wa.me/212725607282?text=" + msg, "_blank");
+/* ===== ANIMATION SCROLL ===== */
+const faders = document.querySelectorAll('.fade');
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+});
+
+/* ===== PACK ===== */
+let selectedPack = "";
+
+function selectPack(p){
+  selectedPack = p;
+  document.getElementById("order").scrollIntoView({behavior:"smooth"});
 }
+
+/* ===== ORDER ===== */
+function sendOrder(){
+
+let name = document.getElementById("name").value;
+let address = document.getElementById("address").value;
+let phone = document.getElementById("phone").value;
+
+let selected = [];
+document.querySelectorAll("input:checked").forEach(el => {
+  selected.push(el.value);
+});
+
+if(selectedPack == "3h" && selected.length != 3){
+  alert("اختر 3 عطور رجالية");
+  return;
+}
+
+if(selectedPack == "3f" && selected.length != 3){
+  alert("اختر 3 عطور نسائية");
+  return;
+}
+
+if(selectedPack == "6" && selected.length != 6){
+  alert("اختر 6 عطور");
+  return;
+}
+
+let msg =
+"طلب جديد:\n" +
+"الاسم: " + name + "\n" +
+"العنوان: " + address + "\n" +
+"الهاتف: " + phone + "\n" +
+"الباك: " + selectedPack + "\n" +
+"العطور: " + selected.join(", ");
+
+window.open("https://wa.me/212725607282?text=" + encodeURIComponent(msg));
+
+}
+
 </script>
 
 </body>
