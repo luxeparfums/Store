@@ -57,11 +57,20 @@ text-align:center;
 padding:70px 20px;
 }
 
+/* 🔥 MODIFIED TITLE */
 .hero h1{
 font-size:40px;
-background:linear-gradient(90deg,gold,white,gold);
--webkit-background-clip:text;
-color:transparent;
+display:inline-block;
+padding:10px 25px;
+border-radius:15px;
+background:rgba(0,0,0,0.75);
+color:gold;
+backdrop-filter: blur(10px);
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.hero p{
+font-size:16px;
 }
 
 /* ===== GLASS ===== */
@@ -233,7 +242,7 @@ Kayali
 <input id="address" placeholder="العنوان">
 <input id="phone" placeholder="الهاتف">
 
-<select id="pack">
+<select id="pack" onchange="render()">
 <option value="3h">Pack 3 Homme</option>
 <option value="3f">Pack 3 Femme</option>
 <option value="6">Pack 6</option>
@@ -256,14 +265,26 @@ Kayali
 let selected=[];
 let max=3;
 
-const perfumes=[
+const data={
+"3h":["Sauvage","Bleu de Chanel","Stronger With You"],
+"3f":["Candy Love","L'interdit","Kayali"],
+"6":[
 "Sauvage","Bleu de Chanel","Stronger With You",
 "Candy Love","L'interdit","Kayali"
-];
+]
+};
 
 function render(){
+
+selected=[];
+document.getElementById("count").innerText=0;
+
+let pack=document.getElementById("pack").value;
+let perfumes=data[pack];
+
 let list=document.getElementById("list");
 list.innerHTML="";
+
 perfumes.forEach(p=>{
 list.innerHTML+=`
 <div class="item">
@@ -271,10 +292,13 @@ ${p}
 <button class="plus" onclick="add('${p}')">+</button>
 </div>`;
 });
+
 }
+
 render();
 
 function add(p){
+
 let pack=document.getElementById("pack").value;
 max=(pack=="6")?6:3;
 
@@ -284,10 +308,12 @@ return;
 }
 
 selected.push(p);
-count.innerText=selected.length;
+document.getElementById("count").innerText=selected.length;
+
 }
 
 function send(){
+
 let pack=document.getElementById("pack").value;
 max=(pack=="6")?6:3;
 
@@ -305,6 +331,7 @@ let msg=
 "العطور: "+selected.join(", ");
 
 window.open("https://wa.me/212725607282?text="+encodeURIComponent(msg));
+
 }
 
 </script>
