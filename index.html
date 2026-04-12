@@ -57,6 +57,7 @@ text-align:center;
 padding:70px 20px;
 }
 
+/* 🔥 MODIFIED TITLE */
 .hero h1{
 font-size:40px;
 display:inline-block;
@@ -121,6 +122,26 @@ transition:0.2s;
 transform:scale(0.85);
 }
 
+/* ripple */
+.plus::after{
+content:"";
+position:absolute;
+width:100px;
+height:100px;
+background:rgba(255,255,255,0.6);
+border-radius:50%;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+opacity:0;
+transition:0.4s;
+}
+
+.plus:active::after{
+transform:translate(-50%,-50%) scale(2);
+opacity:0;
+}
+
 /* ===== INPUT ===== */
 input,select{
 width:90%;
@@ -131,7 +152,7 @@ border:none;
 background:#f5f5f5;
 }
 
-/* ===== BUTTON (APPLE STYLE) ===== */
+/* ===== BUTTON ===== */
 .btn{
 background:black;
 color:gold;
@@ -142,40 +163,11 @@ font-size:18px;
 cursor:pointer;
 position:relative;
 overflow:hidden;
-transition:transform 0.15s ease, box-shadow 0.2s ease;
+transition:0.2s;
 }
 
-/* Apple press animation */
 .btn:active{
 transform:scale(0.9);
-animation:bounce 0.25s ease;
-box-shadow:0 0 20px rgba(255,215,0,0.4);
-}
-
-@keyframes bounce{
-0%{transform:scale(1);}
-50%{transform:scale(0.85);}
-100%{transform:scale(0.9);}
-}
-
-/* ripple */
-.btn::after{
-content:"";
-position:absolute;
-width:140px;
-height:140px;
-background:rgba(255,255,255,0.35);
-border-radius:50%;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%) scale(0);
-opacity:0;
-transition:0.4s;
-}
-
-.btn:active::after{
-transform:translate(-50%,-50%) scale(2.5);
-opacity:0;
 }
 
 /* ===== FOOTER ===== */
@@ -208,6 +200,47 @@ text-shadow:0 0 10px gold;
 <p>الفخامة تبدأ من عطرك ✨</p>
 </div>
 
+<!-- PACKS -->
+<div class="glass">
+<h2>💎 Packs</h2>
+
+<div class="pack">
+<img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539">
+💼 Pack Homme 3 = 99DH
+</div>
+
+<div class="pack">
+<img src="https://images.unsplash.com/photo-1615634262417-5a3c6c4c42f6">
+💖 Pack Femme 3 = 99DH
+</div>
+
+<div class="pack">
+<img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad">
+👑 Pack Complet 6 = 149DH
+</div>
+
+</div>
+
+<!-- MEN -->
+<div class="glass">
+<h2>👨 عطور رجالية</h2>
+
+<div class="item">Sauvage</div>
+<div class="item">Bleu de Chanel</div>
+<div class="item">Stronger With You</div>
+
+</div>
+
+<!-- WOMEN -->
+<div class="glass">
+<h2>👩 عطور نسائية</h2>
+
+<div class="item">Candy Love</div>
+<div class="item">L'interdit</div>
+<div class="item">Kayali</div>
+
+</div>
+
 <!-- ORDER -->
 <div class="glass">
 <h2>📦 الطلب</h2>
@@ -216,7 +249,18 @@ text-shadow:0 0 10px gold;
 <input id="address" placeholder="العنوان">
 <input id="phone" placeholder="الهاتف">
 
-<button class="btn" onclick="haptic(); send()">📲 اطلب الآن</button>
+<select id="pack" onchange="render()">
+<option value="3h">Pack 3 Homme</option>
+<option value="3f">Pack 3 Femme</option>
+<option value="6">Pack 6</option>
+</select>
+
+<h3>✨ اختر عطرك</h3>
+<div id="list"></div>
+
+<p>عدد المختار: <span id="count">0</span></p>
+
+<button class="btn" onclick="send()">📲 اطلب الآن</button>
 </div>
 
 <footer>
@@ -225,16 +269,84 @@ text-shadow:0 0 10px gold;
 
 <script>
 
-/* 📳 vibration iPhone style */
-function haptic(){
-if(navigator.vibrate){
-navigator.vibrate([20, 10, 20]);
-}
+let selected=[];
+let max=3;
+
+const data={
+"3h":["Sauvage","Bleu de Chanel","Stronger With You"],
+"3f":["Candy Love","L'interdit","Kayali"],
+"6":[
+"Sauvage","Bleu de Chanel","Stronger With You",
+"Candy Love","L'interdit","Kayali"
+]
+};
+
+function render(){
+
+selected=[];
+document.getElementById("count").innerText=0;
+
+let pack=document.getElementById("pack").value;
+let perfumes=data[pack];
+
+let list=document.getElementById("list");
+list.innerHTML="";
+
+perfumes.forEach(p=>{
+list.innerHTML+=`
+<div class="item">
+${p}
+<button class="plus" onclick="haptic(); add(this.getAttribute('data-name'))" data-name="${p}">+</button>
+</div>`;
+});
+
 }
 
-/* send function (demo) */
+render();
+
+function add(p){
+
+let pack=document.getElementById("pack").value;
+max=(pack=="6")?6:3;
+
+if(selected.length>=max){
+alert("🚫 الحد الأقصى");
+return;
+}
+
+selected.push(p);
+document.getElementById("count").innerText=selected.length;
+
+}
+
 function send(){
-alert("تم إرسال الطلب 💎");
+
+let pack=document.getElementById("pack").value;
+max=(pack=="6")?6:3;
+
+if(selected.length!=max){
+alert("⚠️ اختر العدد الصحيح");
+return;
+}
+
+haptic();
+
+let msg=
+"طلب جديد 💎\n"+
+"الاسم: "+name.value+"\n"+
+"العنوان: "+address.value+"\n"+
+"الهاتف: "+phone.value+"\n"+
+"الباك: "+pack+"\n"+
+"العطور: "+selected.join(", ");
+
+window.open("https://wa.me/212725607282?text="+encodeURIComponent(msg));
+
+}
+
+function haptic(){
+if(navigator.vibrate){
+navigator.vibrate(25);
+}
 }
 
 </script>
