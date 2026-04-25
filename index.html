@@ -6,11 +6,14 @@
 <title>Luxe Parfums</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap');
+
 body {
   margin: 0;
-  font-family: Arial;
-  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+  font-family: 'Cairo', sans-serif;
+  background: radial-gradient(circle at top, #ffffff, #dcdcdc);
   direction: rtl;
+  overflow-x: hidden;
 }
 
 /* 🔴 Top bar */
@@ -21,7 +24,6 @@ body {
   background: red;
   color: white;
   padding: 10px 0;
-  font-size: 16px;
   font-weight: bold;
   overflow: hidden;
   white-space: nowrap;
@@ -31,88 +33,160 @@ body {
 .top-bar span {
   display: inline-block;
   padding-left: 100%;
-  animation: moveText 12s linear infinite;
+  animation: move 12s linear infinite;
 }
 
-@keyframes moveText {
+@keyframes move {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
 
-/* 🌟 Center layout */
+/* 🌟 animated background glow */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  filter: blur(160px);
+  opacity: 0.25;
+  z-index: -1;
+}
+
+body::before {
+  background: gold;
+  top: -120px;
+  left: -120px;
+  animation: floatGlow 8s ease-in-out infinite;
+}
+
+body::after {
+  background: black;
+  bottom: -150px;
+  right: -120px;
+  animation: floatGlow2 10s ease-in-out infinite;
+}
+
+@keyframes floatGlow {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(40px); }
+}
+
+@keyframes floatGlow2 {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-40px); }
+}
+
+/* wrapper fade-in */
 .wrapper {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px 20px;
+  padding: 100px 20px 60px;
+  animation: fadeIn 1.2s ease-out;
 }
 
-/* 💎 Glass container responsive */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 💎 Glass card */
 .container {
-  width: 90%;
-  max-width: 600px;
+  width: 95%;
+  max-width: 650px;
   padding: 40px;
   border-radius: 25px;
-  backdrop-filter: blur(15px);
-  background: rgba(255, 255, 255, 0.65);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 10px 50px rgba(0,0,0,0.2);
   text-align: center;
 }
 
+/* 🔥 logo floating */
+.logo {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  margin-top: -80px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* title animation */
 h1 {
-  font-size: 32px;
-  color: #222;
+  font-size: 34px;
+  margin: 10px 0 5px;
+  color: #111;
+  animation: slideDown 1s ease;
 }
 
-p {
-  font-size: 18px;
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.subtitle {
   color: #555;
+  margin-bottom: 20px;
+  animation: fadeIn 1.5s ease;
 }
 
-/* Inputs */
+/* inputs */
 select, input {
   width: 100%;
   padding: 15px;
-  margin: 12px 0;
+  margin: 10px 0;
   border-radius: 12px;
   border: none;
-  outline: none;
   font-size: 16px;
+  outline: none;
   background: rgba(255,255,255,0.9);
+  transition: 0.3s;
 }
 
-/* Button */
+/* input hover animation */
+select:focus, input:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* button animation */
 button {
   width: 100%;
   padding: 18px;
   margin-top: 15px;
   border: none;
   border-radius: 14px;
-  background: black;
+  background: linear-gradient(135deg, #000, #333);
   color: white;
   font-size: 18px;
   cursor: pointer;
+  transition: 0.3s;
+  animation: fadeIn 2s ease;
 }
 
 button:hover {
-  background: #333;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* 📱 Mobile improvement */
-@media (max-width: 600px) {
-  .container {
-    padding: 25px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  p {
-    font-size: 15px;
-  }
+/* footer */
+.footer {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #444;
+  animation: fadeIn 2.5s ease;
 }
+
 </style>
 
 </head>
@@ -126,8 +200,10 @@ button:hover {
 <div class="wrapper">
 <div class="container">
 
+  <img class="logo" src="https://www.image2url.com/r2/default/images/1777121061538-d7695421-9afb-45a4-b469-fabca21cd8bd.png" alt="logo">
+
   <h1>Luxe Parfums</h1>
-  <p>اختر الباك وعمّر المعلومات</p>
+  <div class="subtitle">عطور فاخرة بتجربة راقية ✨</div>
 
   <select id="product">
     <option value="باك 3 عطور بنات - 119dh">باك 3 عطور بنات - 119dh</option>
@@ -139,6 +215,10 @@ button:hover {
   <input type="text" id="phone" placeholder="رقم الهاتف">
 
   <button onclick="sendOrder()">اطلب الآن</button>
+
+  <div class="footer">
+    © 2026 Luxe Parfums | جميع الحقوق محفوظة
+  </div>
 
 </div>
 </div>
@@ -161,7 +241,7 @@ function sendOrder() {
 📍 العنوان: ${address}%0A
 📞 الهاتف: ${phone}`;
 
-  window.location.href = `https://wa.me/212XXXXXXXXX?text=${message}`;
+  window.location.href = `https://wa.me/212725607282?text=${message}`;
 }
 </script>
 
