@@ -1,262 +1,231 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUXE PARFUMSS</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<title>Luxe Parfums</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Tajawal:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Tajawal','Cairo', sans-serif;
+  direction: rtl;
+  overflow-x: hidden;
+  background: #f5f5f5;
 }
 
-body{
-background:#0a0a0a;
-color:#fff;
-overflow-x:hidden;
+/* 🌈 BACKGROUND ANIMATION */
+body::before {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: linear-gradient(45deg, #ffffff, #f2f2f2, #eaeaea, #ffffff);
+  animation: bgMove 20s ease-in-out infinite;
+  z-index: -2;
 }
 
-/* NAV */
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 40px;
-position:fixed;
-width:100%;
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(10px);
-z-index:1000;
+@keyframes bgMove {
+  0%,100% { transform: translate(0,0); }
+  50% { transform: translate(40px,40px); }
 }
 
-nav h1{
-color:gold;
-font-size:20px;
-letter-spacing:2px;
+/* soft glow */
+body::after {
+  content: "";
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: gold;
+  filter: blur(120px);
+  opacity: 0.15;
+  top: 10%;
+  left: 10%;
+  z-index: -1;
 }
 
-nav a{
-color:#fff;
-text-decoration:none;
-margin-left:20px;
-transition:0.3s;
+/* 🔴 TOP BAR GRADIENT ANIMATED */
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: white;
+  padding: 10px 0;
+  font-weight: bold;
+  overflow: hidden;
+  z-index: 1000;
+  background: linear-gradient(270deg, #ff0000, #ff4d4d, #cc0000);
+  background-size: 400% 400%;
+  animation: gradientMove 6s ease infinite;
 }
 
-nav a:hover{
-color:gold;
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  50% { background-position: 100% }
+  100% { background-position: 0% }
 }
 
-/* HERO */
-.hero{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-text-align:center;
-background:linear-gradient(to bottom, #000, #111);
-animation:fadeIn 2s ease;
+/* scrolling text smooth */
+.top-track {
+  display: flex;
+  width: max-content;
+  animation: scrollX 9s linear infinite;
 }
 
-.hero h2{
-font-size:3rem;
-color:gold;
-animation:slideUp 1.5s ease;
+.top-track span {
+  padding: 0 50px;
+  white-space: nowrap;
 }
 
-.hero p{
-margin-top:15px;
-color:#ccc;
+@keyframes scrollX {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.btn{
-margin-top:25px;
-padding:12px 30px;
-border:1px solid gold;
-color:gold;
-text-decoration:none;
-transition:0.3s;
+/* wrapper */
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 110px 20px 60px;
 }
 
-.btn:hover{
-background:gold;
-color:black;
+/* 💎 card */
+.container {
+  width: 95%;
+  max-width: 650px;
+  padding: 40px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  text-align: center;
 }
 
-/* PRODUCTS */
-.section{
-padding:80px 20px;
-text-align:center;
+/* logo */
+.logo {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  margin-top: -80px;
 }
 
-.section h2{
-margin-bottom:40px;
-color:gold;
+/* title */
+h1 {
+  font-size: 34px;
+  margin: 10px 0 5px;
+  color: #111;
 }
 
-.cards{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
+.subtitle {
+  color: #555;
+  margin-bottom: 20px;
 }
 
-.card{
-background:#111;
-padding:25px;
-width:250px;
-border-radius:15px;
-transition:0.4s;
-border:1px solid #222;
+/* inputs */
+select, input {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  background: rgba(255,255,255,0.95);
 }
 
-.card:hover{
-transform:translateY(-10px) scale(1.05);
-border-color:gold;
+/* button */
+button {
+  width: 100%;
+  padding: 18px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #000, #333);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.25s;
 }
 
-.card h3{
-margin-bottom:10px;
-color:gold;
+button:hover {
+  transform: scale(1.04);
 }
 
-/* FOOTER */
-footer{
-padding:30px;
-text-align:center;
-color:#777;
-border-top:1px solid #222;
+/* footer */
+.footer {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #444;
 }
 
-/* ANIMATIONS */
-@keyframes fadeIn{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-@keyframes slideUp{
-from{transform:translateY(40px);opacity:0;}
-to{transform:translateY(0);opacity:1;}
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-.hero h2{
-font-size:2rem;
-}
-}
 </style>
 </head>
 
 <body>
 
-<nav>
-<h1>LUXE PARFUMSS</h1>
-<div>
-<a href="#">Home</a>
-<a href="#">Perfumes</a>
-<a href="#">Contact</a>
-</div>
-</nav>
-
-<section class="hero">
-<h2>Luxury in Every Drop</h2>
-<p>Discover the essence of elegance and power</p>
-<a href="https://wa.me/212XXXXXXXXX" class="btn">Order Now</a>
-</section>
-
-<section class="section">
-<h2>Our Collection</h2>
-
-<div class="cards">
-<div class="card">
-<h3>Oud Elite</h3>
-<p>Deep, rich and unforgettable</p>
+<div class="top-bar">
+  <div class="top-track">
+    <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
+    <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
+    <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
+    <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
+  </div>
 </div>
 
-<div class="card">
-<h3>Golden Touch</h3>
-<p>Soft luxury for daily elegance</p>
+<div class="wrapper">
+<div class="container">
+
+  <img class="logo" src="https://www.image2url.com/r2/default/images/1777121061538-d7695421-9afb-45a4-b469-fabca21cd8bd.png">
+
+  <h1>Luxe Parfums</h1>
+  <div class="subtitle">عطور فاخرة بتجربة راقية ✨</div>
+
+  <select id="product">
+    <option value="باك 3 عطور بنات - 119dh">باك 3 عطور بنات - 119dh</option>
+    <option value="باك 3 عطور رجال - 119dh">باك 3 عطور رجال - 119dh</option>
+  </select>
+
+  <input type="text" id="name" placeholder="الاسم الكامل">
+  <input type="text" id="address" placeholder="العنوان الكامل">
+  <input type="text" id="phone" placeholder="رقم الهاتف">
+
+  <button onclick="sendOrder()">اطلب الآن</button>
+
+  <div class="footer">
+    © 2026 Luxe Parfums | جميع الحقوق محفوظة
+  </div>
+
+</div>
 </div>
 
-<div class="card">
-<h3>Black Intense</h3>
-<p>Bold and mysterious scent</p>
-</div>
-</div>
+<script>
+function sendOrder() {
+  let product = document.getElementById("product").value;
+  let name = document.getElementById("name").value;
+  let address = document.getElementById("address").value;
+  let phone = document.getElementById("phone").value;
 
-</section>
+  if(name === "" || address === "" || phone === ""){
+    alert("عمر جميع المعلومات من فضلك");
+    return;
+  }
 
-<footer>
-© 2026 LUXE PARFUMSS — All Rights Reserved
-</footer>
+  let message = `طلب جديد:%0A
+📦 المنتج: ${product}%0A
+👤 الاسم: ${name}%0A
+📍 العنوان: ${address}%0A
+📞 الهاتف: ${phone}`;
+
+  window.location.href = `https://wa.me/212725607282?text=${message}`;
+}
+</script>
 
 </body>
 </html>
-
-<section class="section">
-<h2>Customer Reviews</h2>
-
-<div class="cards">
-
-<!-- Review 1 -->
-<div class="card">
-<img src="https://i.pravatar.cc/100?img=1" style="border-radius:50%;margin-bottom:10px;">
-<h3>Yassine</h3>
-<p>بصراحة عطر فاخر وبقا عندي نهار كامل 🔥</p>
-</div>
-
-<!-- Review 2 -->
-<div class="card">
-<img src="https://i.pravatar.cc/100?img=5" style="border-radius:50%;margin-bottom:10px;">
-<h3>Sara</h3>
-<p>ريحته زوينة بزاف وكيبان quality عالية 💎</p>
-</div>
-
-<!-- Review 3 -->
-<div class="card">
-<img src="https://i.pravatar.cc/100?img=8" style="border-radius:50%;margin-bottom:10px;">
-<h3>Omar</h3>
-<p>خديت واحد وكان أحسن من اللي كنت كنستعمل 👌</p>
-</div>
-
-</div>
-
-<!-- ADD REVIEW -->
-<div style="margin-top:40px;">
-<h3>Share your opinion</h3>
-
-<input type="text" id="name" placeholder="Your name" style="padding:10px;margin:5px;">
-<br>
-
-<textarea id="comment" placeholder="Write your review..." style="padding:10px;width:80%;height:80px;"></textarea>
-<br>
-
-<button onclick="sendReview()" class="btn">Send</button>
-
-<p id="status" style="margin-top:15px;color:gold;"></p>
-</div>
-
-</section>
-
-<script>
-function sendReview(){
-    let name = document.getElementById("name").value;
-    let comment = document.getElementById("comment").value;
-
-    if(name === "" || comment === ""){
-        alert("Fill all fields");
-        return;
-    }
-
-    document.getElementById("status").innerText = "✔️ Your review is under moderation";
-
-    document.getElementById("name").value = "";
-    document.getElementById("comment").value = "";
-}
-</script>
