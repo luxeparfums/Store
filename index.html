@@ -16,37 +16,6 @@ body {
   background: #f5f5f5;
 }
 
-/* 🌈 BACKGROUND ANIMATION */
-body::before {
-  content: "";
-  position: fixed;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background: linear-gradient(45deg, #ffffff, #f2f2f2, #eaeaea, #ffffff);
-  animation: bgMove 20s ease-in-out infinite;
-  z-index: -2;
-}
-
-@keyframes bgMove {
-  0%,100% { transform: translate(0,0); }
-  50% { transform: translate(40px,40px); }
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  background: gold;
-  filter: blur(120px);
-  opacity: 0.15;
-  top: 10%;
-  left: 10%;
-  z-index: -1;
-}
-
 /* 🔴 TOP BAR */
 .top-bar {
   position: fixed;
@@ -58,14 +27,6 @@ body::after {
   overflow: hidden;
   z-index: 1000;
   background: linear-gradient(270deg, #ff0000, #ff4d4d, #cc0000);
-  background-size: 400% 400%;
-  animation: gradientMove 6s ease infinite;
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0% }
-  50% { background-position: 100% }
-  100% { background-position: 0% }
 }
 
 .top-track {
@@ -73,90 +34,111 @@ body::after {
   width: max-content;
   animation: scrollX 9s linear infinite;
 }
-
-.top-track span {
-  padding: 0 50px;
-  white-space: nowrap;
-}
+.top-track span { padding: 0 50px; }
 
 @keyframes scrollX {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* 🔥 PACK SHOWCASE */
+/* 🔥 PACK */
 .pack-showcase {
-  margin: 90px auto 0;
+  margin: 90px auto 20px;
   text-align: center;
-  position: relative;
-  animation: dropIn 1s ease;
-}
-
-@keyframes dropIn {
-  0% { transform: translateY(-80px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
-.pack-showcase::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 260px;
-  height: 260px;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(0,150,255,0.8), transparent 70%);
-  filter: blur(50px);
-  z-index: 0;
-  transition: 0.4s;
-}
-
-.pack-blur {
-  position: absolute;
-  width: 260px;
-  left: 50%;
-  transform: translateX(-50%);
-  filter: blur(25px);
-  opacity: 0.5;
-  z-index: 1;
-  transition: 0.4s;
 }
 
 .pack-img {
   width: 260px;
   border-radius: 15px;
-  position: relative;
-  z-index: 2;
   transition: 0.4s;
 }
-
-.pack-showcase:active .pack-img,
-.pack-showcase.active .pack-img {
+.pack-img:active {
   transform: scale(1.08);
 }
 
-.pack-showcase:active::before,
-.pack-showcase.active::before {
-  filter: blur(70px);
-  background: radial-gradient(circle, rgba(0,180,255,1), transparent 70%);
+/* ✨ TABLES */
+.tables {
+  max-width: 600px;
+  margin: auto;
 }
 
-.pack-showcase:active .pack-blur,
-.pack-showcase.active .pack-blur {
-  opacity: 0.8;
-  filter: blur(35px);
+/* بنات */
+.girls {
+  background: linear-gradient(135deg, #ffe6f0, #ffd6eb);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(255,100,180,0.3);
+  animation: glowPink 3s infinite alternate;
+}
+
+/* رجال */
+.men {
+  background: linear-gradient(135deg, #e6f0ff, #d6e6ff);
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 0 20px rgba(0,120,255,0.3);
+  animation: glowBlue 3s infinite alternate;
+}
+
+@keyframes glowPink {
+  from { box-shadow: 0 0 10px rgba(255,100,180,0.2); }
+  to { box-shadow: 0 0 25px rgba(255,100,180,0.5); }
+}
+
+@keyframes glowBlue {
+  from { box-shadow: 0 0 10px rgba(0,120,255,0.2); }
+  to { box-shadow: 0 0 25px rgba(0,120,255,0.5); }
+}
+
+/* rows */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 10px;
+  margin: 8px 0;
+}
+
+/* icons */
+.icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.icon:hover {
+  transform: scale(1.2);
+}
+
+/* popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+.popup img {
+  width: 300px;
+  border-radius: 15px;
 }
 
 /* wrapper */
 .wrapper {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 30px 20px 60px;
+  padding: 20px;
 }
 
-/* 💎 card */
 .container {
   width: 95%;
   max-width: 650px;
@@ -164,70 +146,20 @@ body::after {
   border-radius: 25px;
   background: rgba(255,255,255,0.7);
   backdrop-filter: blur(14px);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
   text-align: center;
 }
 
-/* 🔥 LOGO */
 .logo {
   width: 95px;
-  height: 95px;
   border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid white;
-  margin-top: -80px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-  animation: floatLogo 4s ease-in-out infinite;
-}
-
-@keyframes floatLogo {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-h1 {
-  font-size: 34px;
-  margin: 10px 0 5px;
-  color: #111;
-}
-
-.subtitle {
-  color: #555;
-  margin-bottom: 20px;
-}
-
-select, input {
-  width: 100%;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 12px;
-  border: none;
-  font-size: 16px;
-  background: rgba(255,255,255,0.95);
 }
 
 button {
   width: 100%;
-  padding: 18px;
-  margin-top: 15px;
-  border: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #000, #333);
+  padding: 15px;
+  background: black;
   color: white;
-  font-size: 18px;
-  cursor: pointer;
-  transition: 0.25s;
-}
-
-button:hover {
-  transform: scale(1.04);
-}
-
-.footer {
-  margin-top: 20px;
-  font-size: 13px;
-  color: #444;
+  border-radius: 10px;
 }
 </style>
 </head>
@@ -236,70 +168,70 @@ button:hover {
 
 <div class="top-bar">
   <div class="top-track">
-    <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
-    <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
-    <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
-    <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
+    <span>🚚 توصيل مجاني 🇲🇦</span>
+    <span>🚚 توصيل مجاني 🇲🇦</span>
   </div>
 </div>
 
 <!-- 🔥 PACK -->
-<div class="pack-showcase" onclick="this.classList.toggle('active')">
-
-  <div style="font-weight:bold; margin-bottom:10px;">
-    🔥 Pack 3 Parfums - عرض محدود
-  </div>
-
-  <img src="https://www.image2url.com/r2/default/images/1777509414279-f0d6f490-d80b-42fc-a1a1-251d36a60708.png" class="pack-blur">
+<div class="pack-showcase">
   <img src="https://www.image2url.com/r2/default/images/1777509414279-f0d6f490-d80b-42fc-a1a1-251d36a60708.png" class="pack-img">
-
 </div>
 
-<div class="wrapper">
-<div class="container">
+<!-- 💎 TABLES -->
+<div class="tables">
 
-  <img class="logo" src="https://www.image2url.com/r2/default/images/1777121061538-d7695421-9afb-45a4-b469-fabca21cd8bd.png">
+  <!-- 💗 بنات -->
+  <div class="girls">
+    <h3>💗 باك عطور بنات</h3>
 
-  <h1>Luxe Parfums</h1>
-  <div class="subtitle">عطور فاخرة بتجربة راقية ✨</div>
+    <div class="row">
+      <span>Kayali</span>
+      <img src="https://i.imgur.com/1.jpg" class="icon" onclick="showImg(this.src)">
+    </div>
 
-  <select id="product">
-    <option value="باك 3 عطور بنات - 119dh">باك 3 عطور بنات - 119dh</option>
-    <option value="باك 3 عطور رجال - 119dh">باك 3 عطور رجال - 119dh</option>
-  </select>
+    <div class="row">
+      <span>Candy Love</span>
+      <img src="https://i.imgur.com/2.jpg" class="icon" onclick="showImg(this.src)">
+    </div>
 
-  <input type="text" id="name" placeholder="الاسم الكامل">
-  <input type="text" id="address" placeholder="العنوان الكامل">
-  <input type="text" id="phone" placeholder="رقم الهاتف">
+    <div class="row">
+      <span>L’interdit</span>
+      <img src="https://i.imgur.com/3.jpg" class="icon" onclick="showImg(this.src)">
+    </div>
+  </div>
 
-  <button onclick="sendOrder()">اطلب الآن</button>
+  <!-- 💙 رجال -->
+  <div class="men">
+    <h3>💙 باك عطور رجال</h3>
 
-  <div class="footer">
-    © 2026 Luxe Parfums | جميع الحقوق محفوظة
+    <div class="row">
+      <span>Sauvage</span>
+      <img src="https://i.imgur.com/4.jpg" class="icon" onclick="showImg(this.src)">
+    </div>
+
+    <div class="row">
+      <span>Bleu de Chanel</span>
+      <img src="https://i.imgur.com/5.jpg" class="icon" onclick="showImg(this.src)">
+    </div>
+
+    <div class="row">
+      <span>Stronger With You Intensely</span>
+      <img src="https://i.imgur.com/6.jpg" class="icon" onclick="showImg(this.src)">
+    </div>
   </div>
 
 </div>
+
+<!-- popup -->
+<div class="popup" id="popup" onclick="this.style.display='none'">
+  <img id="popupImg">
 </div>
 
 <script>
-function sendOrder() {
-  let product = document.getElementById("product").value;
-  let name = document.getElementById("name").value;
-  let address = document.getElementById("address").value;
-  let phone = document.getElementById("phone").value;
-
-  if(name === "" || address === "" || phone === ""){
-    alert("عمر جميع المعلومات من فضلك");
-    return;
-  }
-
-  let message = `طلب جديد:%0A
-📦 المنتج: ${product}%0A
-👤 الاسم: ${name}%0A
-📍 العنوان: ${address}%0A
-📞 الهاتف: ${phone}`;
-
-  window.location.href = `https://wa.me/212725607282?text=${message}`;
+function showImg(src){
+  document.getElementById("popup").style.display="flex";
+  document.getElementById("popupImg").src = src;
 }
 </script>
 
