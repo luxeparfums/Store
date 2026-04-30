@@ -84,13 +84,76 @@ body::after {
   100% { transform: translateX(-50%); }
 }
 
+/* 🔥 PACK SHOWCASE */
+.pack-showcase {
+  margin: 90px auto 0;
+  text-align: center;
+  position: relative;
+  animation: dropIn 1s ease;
+}
+
+@keyframes dropIn {
+  0% { transform: translateY(-80px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.pack-showcase::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0,150,255,0.8), transparent 70%);
+  filter: blur(50px);
+  z-index: 0;
+  transition: 0.4s;
+}
+
+.pack-blur {
+  position: absolute;
+  width: 260px;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(25px);
+  opacity: 0.5;
+  z-index: 1;
+  transition: 0.4s;
+}
+
+.pack-img {
+  width: 260px;
+  border-radius: 15px;
+  position: relative;
+  z-index: 2;
+  transition: 0.4s;
+}
+
+.pack-showcase:active .pack-img,
+.pack-showcase.active .pack-img {
+  transform: scale(1.08);
+}
+
+.pack-showcase:active::before,
+.pack-showcase.active::before {
+  filter: blur(70px);
+  background: radial-gradient(circle, rgba(0,180,255,1), transparent 70%);
+}
+
+.pack-showcase:active .pack-blur,
+.pack-showcase.active .pack-blur {
+  opacity: 0.8;
+  filter: blur(35px);
+}
+
 /* wrapper */
 .wrapper {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 110px 20px 60px;
+  padding: 30px 20px 60px;
 }
 
 /* 💎 card */
@@ -105,7 +168,7 @@ body::after {
   text-align: center;
 }
 
-/* 🔥 LOGO WITH FLOAT ANIMATION */
+/* 🔥 LOGO */
 .logo {
   width: 95px;
   height: 95px;
@@ -114,18 +177,15 @@ body::after {
   border: 3px solid white;
   margin-top: -80px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-
   animation: floatLogo 4s ease-in-out infinite;
-  will-change: transform;
 }
 
 @keyframes floatLogo {
-  0%   { transform: translateY(0px); }
-  50%  { transform: translateY(-10px); }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
   100% { transform: translateY(0px); }
 }
 
-/* title */
 h1 {
   font-size: 34px;
   margin: 10px 0 5px;
@@ -137,7 +197,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* inputs */
 select, input {
   width: 100%;
   padding: 15px;
@@ -148,7 +207,6 @@ select, input {
   background: rgba(255,255,255,0.95);
 }
 
-/* button */
 button {
   width: 100%;
   padding: 18px;
@@ -166,13 +224,11 @@ button:hover {
   transform: scale(1.04);
 }
 
-/* footer */
 .footer {
   margin-top: 20px;
   font-size: 13px;
   color: #444;
 }
-
 </style>
 </head>
 
@@ -185,6 +241,18 @@ button:hover {
     <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
     <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
   </div>
+</div>
+
+<!-- 🔥 PACK -->
+<div class="pack-showcase" onclick="this.classList.toggle('active')">
+
+  <div style="font-weight:bold; margin-bottom:10px;">
+    🔥 Pack 3 Parfums - عرض محدود
+  </div>
+
+  <img src="https://www.image2url.com/r2/default/images/1777509414279-f0d6f490-d80b-42fc-a1a1-251d36a60708.png" class="pack-blur">
+  <img src="https://www.image2url.com/r2/default/images/1777509414279-f0d6f490-d80b-42fc-a1a1-251d36a60708.png" class="pack-img">
+
 </div>
 
 <div class="wrapper">
