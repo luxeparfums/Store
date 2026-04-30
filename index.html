@@ -16,6 +16,23 @@ body {
   background: #f5f5f5;
 }
 
+/* 🌈 BACKGROUND */
+body::before {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: linear-gradient(45deg, #ffffff, #f2f2f2, #eaeaea, #ffffff);
+  animation: bgMove 20s infinite;
+  z-index: -2;
+}
+@keyframes bgMove {
+  0%,100% { transform: translate(0,0); }
+  50% { transform: translate(40px,40px); }
+}
+
 /* 🔴 TOP BAR */
 .top-bar {
   position: fixed;
@@ -24,14 +41,12 @@ body {
   color: white;
   padding: 10px 0;
   font-weight: bold;
-  overflow: hidden;
   z-index: 1000;
   background: linear-gradient(270deg, #ff0000, #ff4d4d, #cc0000);
 }
 
 .top-track {
   display: flex;
-  width: max-content;
   animation: scrollX 9s linear infinite;
 }
 .top-track span { padding: 0 50px; }
@@ -46,96 +61,69 @@ body {
   margin: 90px auto 20px;
   text-align: center;
 }
-
 .pack-img {
-  width: 260px;
+  width: 240px;
   border-radius: 15px;
-  transition: 0.4s;
-}
-.pack-img:active {
-  transform: scale(1.08);
 }
 
-/* ✨ TABLES */
+/* 💎 TABLES */
 .tables {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
   max-width: 600px;
   margin: auto;
 }
 
-/* بنات */
-.girls {
-  background: linear-gradient(135deg, #ffe6f0, #ffd6eb);
-  border-radius: 15px;
-  padding: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 20px rgba(255,100,180,0.3);
-  animation: glowPink 3s infinite alternate;
+.table-box {
+  width: 45%;
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid black;
+  text-align: center;
+  font-size: 14px;
 }
 
-/* رجال */
-.men {
-  background: linear-gradient(135deg, #e6f0ff, #d6e6ff);
-  border-radius: 15px;
-  padding: 15px;
-  box-shadow: 0 0 20px rgba(0,120,255,0.3);
-  animation: glowBlue 3s infinite alternate;
-}
+.girls { background: #ffe6f0; }
+.men { background: #e6f0ff; }
 
-@keyframes glowPink {
-  from { box-shadow: 0 0 10px rgba(255,100,180,0.2); }
-  to { box-shadow: 0 0 25px rgba(255,100,180,0.5); }
-}
-
-@keyframes glowBlue {
-  from { box-shadow: 0 0 10px rgba(0,120,255,0.2); }
-  to { box-shadow: 0 0 25px rgba(0,120,255,0.5); }
-}
-
-/* rows */
 .row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background: rgba(255,255,255,0.7);
-  border-radius: 10px;
-  margin: 8px 0;
+  margin: 6px 0;
 }
 
-/* icons */
 .icon {
-  width: 45px;
-  height: 45px;
-  border-radius: 8px;
+  width: 35px;
+  height: 35px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: 0.3s;
-}
-.icon:hover {
-  transform: scale(1.2);
 }
 
 /* popup */
 .popup {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
 }
 .popup img {
-  width: 300px;
-  border-radius: 15px;
+  width:250px;
+  border-radius:10px;
 }
 
 /* wrapper */
 .wrapper {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 20px;
 }
 
@@ -154,12 +142,24 @@ body {
   border-radius: 50%;
 }
 
+h1 { font-size: 28px; }
+
+select, input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: none;
+}
+
 button {
   width: 100%;
   padding: 15px;
   background: black;
   color: white;
   border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -181,46 +181,42 @@ button {
 <!-- 💎 TABLES -->
 <div class="tables">
 
-  <!-- 💗 بنات -->
-  <div class="girls">
-    <h3>💗 باك عطور بنات</h3>
-
-    <div class="row">
-      <span>Kayali</span>
-      <img src="https://i.imgur.com/1.jpg" class="icon" onclick="showImg(this.src)">
-    </div>
-
-    <div class="row">
-      <span>Candy Love</span>
-      <img src="https://i.imgur.com/2.jpg" class="icon" onclick="showImg(this.src)">
-    </div>
-
-    <div class="row">
-      <span>L’interdit</span>
-      <img src="https://i.imgur.com/3.jpg" class="icon" onclick="showImg(this.src)">
-    </div>
+  <div class="table-box girls">
+    <b>💗 بنات</b>
+    <div class="row">Kayali <img src="https://i.imgur.com/1.jpg" class="icon" onclick="showImg(this.src)"></div>
+    <div class="row">Candy Love <img src="https://i.imgur.com/2.jpg" class="icon" onclick="showImg(this.src)"></div>
+    <div class="row">L’interdit <img src="https://i.imgur.com/3.jpg" class="icon" onclick="showImg(this.src)"></div>
   </div>
 
-  <!-- 💙 رجال -->
-  <div class="men">
-    <h3>💙 باك عطور رجال</h3>
-
-    <div class="row">
-      <span>Sauvage</span>
-      <img src="https://i.imgur.com/4.jpg" class="icon" onclick="showImg(this.src)">
-    </div>
-
-    <div class="row">
-      <span>Bleu de Chanel</span>
-      <img src="https://i.imgur.com/5.jpg" class="icon" onclick="showImg(this.src)">
-    </div>
-
-    <div class="row">
-      <span>Stronger With You Intensely</span>
-      <img src="https://i.imgur.com/6.jpg" class="icon" onclick="showImg(this.src)">
-    </div>
+  <div class="table-box men">
+    <b>💙 رجال</b>
+    <div class="row">Sauvage <img src="https://i.imgur.com/4.jpg" class="icon" onclick="showImg(this.src)"></div>
+    <div class="row">Bleu de Chanel <img src="https://i.imgur.com/5.jpg" class="icon" onclick="showImg(this.src)"></div>
+    <div class="row">Stronger With You Intensely <img src="https://i.imgur.com/6.jpg" class="icon" onclick="showImg(this.src)"></div>
   </div>
 
+</div>
+
+<!-- 🧾 FORM -->
+<div class="wrapper">
+<div class="container">
+
+  <img class="logo" src="https://www.image2url.com/r2/default/images/1777121061538-d7695421-9afb-45a4-b469-fabca21cd8bd.png">
+
+  <h1>Luxe Parfums</h1>
+
+  <select id="product">
+    <option value="باك 3 عطور بنات - 119dh">باك 3 عطور بنات - 119dh</option>
+    <option value="باك 3 عطور رجال - 119dh">باك 3 عطور رجال - 119dh</option>
+  </select>
+
+  <input type="text" id="name" placeholder="الاسم الكامل">
+  <input type="text" id="address" placeholder="العنوان الكامل">
+  <input type="text" id="phone" placeholder="رقم الهاتف">
+
+  <button onclick="sendOrder()">اطلب الآن</button>
+
+</div>
 </div>
 
 <!-- popup -->
@@ -232,6 +228,26 @@ button {
 function showImg(src){
   document.getElementById("popup").style.display="flex";
   document.getElementById("popupImg").src = src;
+}
+
+function sendOrder() {
+  let product = document.getElementById("product").value;
+  let name = document.getElementById("name").value;
+  let address = document.getElementById("address").value;
+  let phone = document.getElementById("phone").value;
+
+  if(name === "" || address === "" || phone === ""){
+    alert("عمر جميع المعلومات من فضلك");
+    return;
+  }
+
+  let message = `طلب جديد:%0A
+📦 المنتج: ${product}%0A
+👤 الاسم: ${name}%0A
+📍 العنوان: ${address}%0A
+📞 الهاتف: ${phone}`;
+
+  window.location.href = `https://wa.me/212725607282?text=${message}`;
 }
 </script>
 
