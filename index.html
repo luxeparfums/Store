@@ -8,249 +8,157 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Tajawal:wght@400;700&display=swap');
 
-body {
-  margin: 0;
-  font-family: 'Tajawal','Cairo', sans-serif;
-  direction: rtl;
-  overflow-x: hidden;
-  background: #f5f5f5;
+body{
+  margin:0;
+  font-family:'Tajawal','Cairo',sans-serif;
+  direction:rtl;
+  background:#f5f5f5;
 }
 
-/* 🌈 BACKGROUND */
-body::before {
-  content: "";
-  position: fixed;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background: linear-gradient(45deg, #ffffff, #f2f2f2, #eaeaea, #ffffff);
-  animation: bgMove 20s infinite;
-  z-index: -2;
-}
-@keyframes bgMove {
-  0%,100% { transform: translate(0,0); }
-  50% { transform: translate(40px,40px); }
-}
-
-/* 🔴 TOP BAR */
-.top-bar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  color: white;
-  padding: 10px 0;
-  font-weight: bold;
-  z-index: 1000;
-  background: linear-gradient(270deg, #ff0000, #ff4d4d, #cc0000);
-}
-
-.top-track {
-  display: flex;
-  animation: scrollX 9s linear infinite;
-}
-.top-track span { padding: 0 50px; }
-
-@keyframes scrollX {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* 🔥 PACK */
-.pack-showcase {
-  margin: 90px auto 20px;
-  text-align: center;
-}
-.pack-img {
-  width: 240px;
-  border-radius: 15px;
-}
-
-/* 💎 TABLES */
-.tables {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  max-width: 600px;
-  margin: auto;
-}
-
-.table-box {
-  width: 45%;
-  padding: 10px;
-  border-radius: 12px;
-  border: 2px solid black;
-  text-align: center;
-  font-size: 14px;
-}
-
-.girls { background: #ffe6f0; }
-.men { background: #e6f0ff; }
-
-.row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 6px 0;
-}
-
-.icon {
-  width: 35px;
-  height: 35px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* popup */
-.popup {
-  position: fixed;
+.top-bar{
+  position:fixed;
   top:0;
-  left:0;
   width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.8);
-  display:none;
-  justify-content:center;
+  background:red;
+  color:#fff;
+  padding:10px;
+  text-align:center;
+  font-weight:bold;
+  z-index:1000;
+}
+
+/* PRODUCTS */
+.section{
+  margin-top:80px;
+  padding:10px;
+}
+
+.title{
+  text-align:center;
+  font-size:20px;
+  margin:20px 0;
+}
+
+.product{
+  background:white;
+  padding:10px;
+  margin:10px auto;
+  max-width:500px;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
   align-items:center;
 }
-.popup img {
-  width:250px;
-  border-radius:10px;
+
+button{
+  background:black;
+  color:white;
+  border:none;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
-/* wrapper */
-.wrapper {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+/* CART */
+.cart{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:white;
+  padding:10px;
+  box-shadow:0 -2px 10px rgba(0,0,0,0.2);
 }
 
-.container {
-  width: 95%;
-  max-width: 650px;
-  padding: 40px;
-  border-radius: 25px;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(14px);
-  text-align: center;
+.cart-items{
+  max-height:120px;
+  overflow:auto;
+  font-size:14px;
 }
 
-.logo {
-  width: 95px;
-  border-radius: 50%;
+input{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
 }
 
-h1 { font-size: 28px; }
-
-select, input {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border-radius: 10px;
-  border: none;
-}
-
-button {
-  width: 100%;
-  padding: 15px;
-  background: black;
-  color: white;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
+.send{
+  width:100%;
+  padding:12px;
+  background:green;
+  color:white;
+  font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<div class="top-bar">
-  <div class="top-track">
-    <span>🚚 توصيل مجاني 🇲🇦</span>
-    <span>🚚 توصيل مجاني 🇲🇦</span>
-  </div>
+<div class="top-bar">🔥 عرض محدود - توصيل مجاني المغرب</div>
+
+<div class="section">
+
+<h2 class="title">💥 Packs و تخفيضات</h2>
+
+<div class="product">
+  <span>3 عطور - 99 درهم</span>
+  <button onclick="add('3 عطور - 99 درهم')">+</button>
 </div>
 
-<!-- 🔥 PACK -->
-<div class="pack-showcase">
-  <img src="https://www.image2url.com/r2/default/images/1777509414279-f0d6f490-d80b-42fc-a1a1-251d36a60708.png" class="pack-img">
+<div class="product">
+  <span>Pack رجال + نساء - 99 درهم</span>
+  <button onclick="add('Pack رجال + نساء - 99 درهم')">+</button>
 </div>
-
-<!-- 💎 TABLES -->
-<div class="tables">
-
-  <div class="table-box girls">
-    <b>💗 بنات</b>
-    <div class="row">Kayali <img src="https://www.image2url.com/r2/default/images/1777551256212-d24f7b7f-6124-4be4-acd0-81d768b76bdf.png" class="icon" onclick="showImg(this.src)"></div>
-    <div class="row">Candy Love <img src="https://www.image2url.com/r2/default/images/1777551337320-2d3fb26b-2e0d-48ac-ac8e-05ca265e4405.png" class="icon" onclick="showImg(this.src)"></div>
-    <div class="row">L’interdit <img src="https://www.image2url.com/r2/default/images/1777551151159-59283a7e-84a4-4ce5-ab5c-6daca84df9a6.png" class="icon" onclick="showImg(this.src)"></div>
-  </div>
-
-  <div class="table-box men">
-    <b>💙 رجال</b>
-    <div class="row">Sauvage <img src="https://www.image2url.com/r2/default/images/1777550757365-2960bdd6-f51d-478d-ad54-b6949be78597.png" class="icon" onclick="showImg(this.src)"></div>
-    <div class="row">Bleu de Chanel <img src="https://www.image2url.com/r2/default/images/1777549956920-ab9dfe1f-6b96-4b59-b2f8-823c3eac3c7b.png" class="icon" onclick="showImg(this.src)"></div>
-    <div class="row">Stronger With You Intensely <img src="https://www.image2url.com/r2/default/images/1777550603314-3494d38f-306e-43ab-8bd0-02096465e1e2.png" class="icon" onclick="showImg(this.src)"></div>
-  </div>
 
 </div>
 
-<!-- 🧾 FORM -->
-<div class="wrapper">
-<div class="container">
+<div class="cart">
 
-  <img class="logo" src="https://www.image2url.com/r2/default/images/1777121061538-d7695421-9afb-45a4-b469-fabca21cd8bd.png">
+<h3>🛒 السلة</h3>
+<div class="cart-items" id="cart"></div>
 
-  <h1>Luxe Parfums</h1>
+<input id="name" placeholder="الاسم">
+<input id="phone" placeholder="الهاتف">
+<input id="address" placeholder="العنوان">
 
-  <select id="product">
-    <option value="باك 3 عطور بنات - 119dh">باك 3 عطور بنات - 119dh</option>
-    <option value="باك 3 عطور رجال - 119dh">باك 3 عطور رجال - 119dh</option>
-  </select>
+<button class="send" onclick="send()">طلب عبر واتساب</button>
 
-  <input type="text" id="name" placeholder="الاسم الكامل">
-  <input type="text" id="address" placeholder="العنوان الكامل">
-  <input type="text" id="phone" placeholder="رقم الهاتف">
-
-  <button onclick="sendOrder()">اطلب الآن</button>
-
-</div>
-</div>
-
-<!-- popup -->
-<div class="popup" id="popup" onclick="this.style.display='none'">
-  <img id="popupImg">
 </div>
 
 <script>
-function showImg(src){
-  document.getElementById("popup").style.display="flex";
-  document.getElementById("popupImg").src = src;
+
+let cart=[];
+
+function add(item){
+  cart.push(item);
+  render();
 }
 
-function sendOrder() {
-  let product = document.getElementById("product").value;
-  let name = document.getElementById("name").value;
-  let address = document.getElementById("address").value;
-  let phone = document.getElementById("phone").value;
+function render(){
+  document.getElementById("cart").innerHTML =
+  cart.map((i,idx)=>`<div>${idx+1}- ${i}</div>`).join("");
+}
 
-  if(name === "" || address === "" || phone === ""){
-    alert("عمر جميع المعلومات من فضلك");
+function send(){
+
+  let name=document.getElementById("name").value;
+  let phone=document.getElementById("phone").value;
+  let address=document.getElementById("address").value;
+
+  if(!name||!phone||!address){
+    alert("عمر جميع المعلومات");
     return;
   }
 
-  let message = `طلب جديد:%0A
-📦 المنتج: ${product}%0A
+  let msg=`طلب جديد:%0A
 👤 الاسم: ${name}%0A
+📞 الهاتف: ${phone}%0A
 📍 العنوان: ${address}%0A
-📞 الهاتف: ${phone}`;
+🛒 المنتجات:%0A${cart.join("%0A")}`;
 
+  window.open("https://wa.me/212725607282?text="+msg,"_blank");
 
- window.location.href = `https://wa.me/212725607282?text=${message}`;
-  
 }
+
 </script>
 
 </body>
