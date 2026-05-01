@@ -8,157 +8,231 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Tajawal:wght@400;700&display=swap');
 
-body{
-  margin:0;
-  font-family:'Tajawal','Cairo',sans-serif;
-  direction:rtl;
-  background:#f5f5f5;
+body {
+  margin: 0;
+  font-family: 'Tajawal','Cairo', sans-serif;
+  direction: rtl;
+  overflow-x: hidden;
+  background: #f5f5f5;
 }
 
-.top-bar{
-  position:fixed;
-  top:0;
-  width:100%;
-  background:red;
-  color:#fff;
-  padding:10px;
-  text-align:center;
-  font-weight:bold;
-  z-index:1000;
+/* 🌈 BACKGROUND ANIMATION */
+body::before {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: linear-gradient(45deg, #ffffff, #f2f2f2, #eaeaea, #ffffff);
+  animation: bgMove 20s ease-in-out infinite;
+  z-index: -2;
 }
 
-/* PRODUCTS */
-.section{
-  margin-top:80px;
-  padding:10px;
+@keyframes bgMove {
+  0%,100% { transform: translate(0,0); }
+  50% { transform: translate(40px,40px); }
 }
 
-.title{
-  text-align:center;
-  font-size:20px;
-  margin:20px 0;
+body::after {
+  content: "";
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: gold;
+  filter: blur(120px);
+  opacity: 0.15;
+  top: 10%;
+  left: 10%;
+  z-index: -1;
 }
 
-.product{
-  background:white;
-  padding:10px;
-  margin:10px auto;
-  max-width:500px;
-  border-radius:10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+/* 🔴 TOP BAR */
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: white;
+  padding: 10px 0;
+  font-weight: bold;
+  overflow: hidden;
+  z-index: 1000;
+  background: linear-gradient(270deg, #ff0000, #ff4d4d, #cc0000);
+  background-size: 400% 400%;
+  animation: gradientMove 6s ease infinite;
 }
 
-button{
-  background:black;
-  color:white;
-  border:none;
-  padding:8px 12px;
-  border-radius:8px;
-  cursor:pointer;
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  50% { background-position: 100% }
+  100% { background-position: 0% }
 }
 
-/* CART */
-.cart{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:white;
-  padding:10px;
-  box-shadow:0 -2px 10px rgba(0,0,0,0.2);
+.top-track {
+  display: flex;
+  width: max-content;
+  animation: scrollX 9s linear infinite;
 }
 
-.cart-items{
-  max-height:120px;
-  overflow:auto;
-  font-size:14px;
+.top-track span {
+  padding: 0 50px;
+  white-space: nowrap;
 }
 
-input{
-  width:100%;
-  padding:10px;
-  margin:5px 0;
+@keyframes scrollX {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.send{
-  width:100%;
-  padding:12px;
-  background:green;
-  color:white;
-  font-weight:bold;
+/* wrapper */
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 110px 20px 60px;
 }
+
+/* 💎 card */
+.container {
+  width: 95%;
+  max-width: 650px;
+  padding: 40px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+/* 🔥 LOGO WITH FLOAT ANIMATION */
+.logo {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  margin-top: -80px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+
+  animation: floatLogo 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes floatLogo {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* title */
+h1 {
+  font-size: 34px;
+  margin: 10px 0 5px;
+  color: #111;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* inputs */
+select, input {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  background: rgba(255,255,255,0.95);
+}
+
+/* button */
+button {
+  width: 100%;
+  padding: 18px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #000, #333);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+button:hover {
+  transform: scale(1.04);
+}
+
+/* footer */
+.footer {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #444;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="top-bar">🔥 عرض محدود - توصيل مجاني المغرب</div>
-
-<div class="section">
-
-<h2 class="title">💥 Packs و تخفيضات</h2>
-
-<div class="product">
-  <span>3 عطور - 99 درهم</span>
-  <button onclick="add('3 عطور - 99 درهم')">+</button>
+<div class="top-bar">
+  <div class="top-track">
+    <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
+    <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
+    <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
+    <span>🚚 توصيل مجاني في المغرب كامل 🇲🇦✨</span>
+  </div>
 </div>
 
-<div class="product">
-  <span>Pack رجال + نساء - 99 درهم</span>
-  <button onclick="add('Pack رجال + نساء - 99 درهم')">+</button>
-</div>
+<div class="wrapper">
+<div class="container">
+
+  <img class="logo" src="https://www.image2url.com/r2/default/images/1777121061538-d7695421-9afb-45a4-b469-fabca21cd8bd.png">
+
+  <h1>Luxe Parfums</h1>
+  <div class="subtitle">عطور فاخرة بتجربة راقية ✨</div>
+
+  <select id="product">
+    <option value="باك 3 عطور بنات - 99dh">باك 3 عطور بنات - 99dh</option>
+    <option value="باك 3 عطور رجال - 99dh">باك 3 عطور رجال - 99dh</option>
+  </select>
+
+  <input type="text" id="name" placeholder="الاسم الكامل">
+  <input type="text" id="address" placeholder="العنوان الكامل">
+  <input type="text" id="phone" placeholder="رقم الهاتف">
+
+  <button onclick="sendOrder()">اطلب الآن</button>
+
+  <div class="footer">
+    © 2026 Luxe Parfums | جميع الحقوق محفوظة
+  </div>
 
 </div>
-
-<div class="cart">
-
-<h3>🛒 السلة</h3>
-<div class="cart-items" id="cart"></div>
-
-<input id="name" placeholder="الاسم">
-<input id="phone" placeholder="الهاتف">
-<input id="address" placeholder="العنوان">
-
-<button class="send" onclick="send()">طلب عبر واتساب</button>
-
 </div>
 
 <script>
+function sendOrder() {
+  let product = document.getElementById("product").value;
+  let name = document.getElementById("name").value;
+  let address = document.getElementById("address").value;
+  let phone = document.getElementById("phone").value;
 
-let cart=[];
-
-function add(item){
-  cart.push(item);
-  render();
-}
-
-function render(){
-  document.getElementById("cart").innerHTML =
-  cart.map((i,idx)=>`<div>${idx+1}- ${i}</div>`).join("");
-}
-
-function send(){
-
-  let name=document.getElementById("name").value;
-  let phone=document.getElementById("phone").value;
-  let address=document.getElementById("address").value;
-
-  if(!name||!phone||!address){
-    alert("عمر جميع المعلومات");
+  if(name === "" || address === "" || phone === ""){
+    alert("عمر جميع المعلومات من فضلك");
     return;
   }
 
-  let msg=`طلب جديد:%0A
+  let message = `طلب جديد:%0A
+📦 المنتج: ${product}%0A
 👤 الاسم: ${name}%0A
-📞 الهاتف: ${phone}%0A
 📍 العنوان: ${address}%0A
-🛒 المنتجات:%0A${cart.join("%0A")}`;
+📞 الهاتف: ${phone}`;
 
-  window.open("https://wa.me/212725607282?text="+msg,"_blank");
-
+  window.location.href = `https://wa.me/212725607282?text=${message}`;
 }
-
 </script>
 
 </body>
